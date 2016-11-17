@@ -23,8 +23,10 @@ public class DriverBase extends TestExecutor {
 		String scPath = ExcelUtils.propertyReader(propertiesFilepath, "scPath");
 		String repoPath = ExcelUtils.propertyReader(propertiesFilepath, "repoPath");
 		WebDriver wd = null;
+		
 		// to execute scenario's
 		String executorSheetName = "suite";
+		
 		//loop through sheet suite 
 		for (int i = 1; i <= ExcelUtils.getRowCount(executorSheetName, path); i++) {
 			// check which sheet should be executed
