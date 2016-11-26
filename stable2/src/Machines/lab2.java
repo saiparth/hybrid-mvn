@@ -1,16 +1,8 @@
 package Machines;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-import org.apache.commons.codec.binary.StringUtils;
-import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 public class lab2 extends ExcelUtils {
 	static int e = 2;
@@ -26,13 +18,27 @@ public class lab2 extends ExcelUtils {
 	 * System.out.println(ExcelUtils.reader("login", i, 1, path)); } } }
 	 */
 	@Test
-	public void t() {
-		for (int i = 0; i < 5; i++) {
-			if (e == 2) {
-				System.out.println("cont");
-				continue;
-			} 
-			System.out.println(i);
+	public void g(){
+		for (int i = 0; i < 2; i++) {
+			t();
 		}
+		
+		
+		}
+	
+	public String t() {
+		int i=10,b=3;
+		String val=null;
+		for (int j = 0; j < 3; j++) {
+			val=ta();
+		}
+		System.out.println(val);
+		return val;
+		
+	}
+	public String ta() {
+		Scanner sc=new Scanner(System.in);
+		String f=sc.next();
+		return f;
 	}
 }

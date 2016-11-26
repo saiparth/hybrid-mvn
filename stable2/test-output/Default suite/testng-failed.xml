@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="lab.listner">
+      <class name="lab.switchtowindow">
         <methods>
-          <include name="actionPerformed"/>
+          <include name="nested"/>
         </methods>
-      </class> <!-- lab.listner -->
+      </class> <!-- lab.switchtowindow -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

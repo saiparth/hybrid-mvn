@@ -18,13 +18,15 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import hybrid.MultiGetelement;
 
 public class TestExecutor extends MultiGetelement {
+	static String parent = null;
 	public static String actionPerformer(int i, WebDriver wd, String sheetName, String path,String scPath, String repoPath, int columnToRefer)
 			throws EncryptedDocumentException, InvalidFormatException, IOException {
 		String status = "PASS",input = "";
 		String repoSheetname="objectRepository";
+		
 		statusWriter(i, sheetName, status, path, 6);
 		try {
-			 input = ExcelUtils.reader(sheetName, i, columnToRefer, path).toString();
+			 input = ExcelUtils.reader(sheetName, i, columnToRefer, path).toString().toLowerCase();
 			
 		} catch (Exception e) {
 			System.out.println("inside actionperformer,unable to get input");
@@ -104,18 +106,41 @@ public class TestExecutor extends MultiGetelement {
 					helpingfunctions.takeScreenShot(wd, scPath);
 				}
 				break;
-			case "close":
+			case "switchtowindow":
 				try {
-					wd.quit();
+					//int windowIndex=0;
+					long windowIndex=counter(i, sheetName, 3, path);
+					//counter(int i, String sheetName, int colName, String path)
+					helpingfunctions.windowSwitcher(wd, windowIndex);
 				} catch (Exception e) {
 					status = "FAIL" + e.getMessage();
 					statusWriter(i, sheetName, status, path, 6);
 					helpingfunctions.takeScreenShot(wd, scPath);
 				}
 				break;
-			case "switch to window":
+			case "close":
 				try {
-					wd.switchTo().window("hjh");
+					wd.close();
+				} catch (Exception e) {
+					status = "FAIL" + e.getMessage();
+					statusWriter(i, sheetName, status, path, 6);
+					helpingfunctions.takeScreenShot(wd, scPath);
+				}
+				break;
+			case "storethiswinhandle":
+				try {					
+					 parent=wd.getWindowHandle();
+				} catch (Exception e) {
+					status = "FAIL" + e.getMessage();
+					statusWriter(i, sheetName, status, path, 6);
+					helpingfunctions.takeScreenShot(wd, scPath);
+				}
+				break;
+			case "switchtoparentwindow":
+				try {	
+					System.out.println("attempting to switch to parent");
+					System.out.println(parent);
+					 wd.switchTo().window(parent);
 				} catch (Exception e) {
 					status = "FAIL" + e.getMessage();
 					statusWriter(i, sheetName, status, path, 6);

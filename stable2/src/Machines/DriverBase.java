@@ -108,7 +108,7 @@ public class DriverBase extends TestExecutor {
 											continue;
 										}
 									//if result is fail the execute speacial scenario
-										if(actionPerformer(j, wd, sheethameToBExecuted, path, scPath, repoPath,2).toLowerCase().contains("fail"))
+										if(actionPerformer(j, wd, sheethameToBExecuted, path, scPath, repoPath,2).toLowerCase().contains("pass"))
 								{
 									for (int k = j+1; k <=ExcelUtils.getRowCount(sheethameToBExecuted, path); k++)
 									{

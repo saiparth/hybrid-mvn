@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.Set;
+
 import org.junit.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -32,6 +35,19 @@ public class helpingfunctions {
 			Calendar cal = Calendar.getInstance();
 			String date = df.format(cal.getTime());
 			return date;
+		}
+		public static void windowSwitcher(WebDriver wd,long windowIndex){
+			Set<String>iterator=wd.getWindowHandles();
+			Iterator<String>winIterator=iterator.iterator();
+			long count=0;
+			while (winIterator.hasNext()) {
+				String s=winIterator.next().toString();
+				wd.switchTo().window(s);
+				if (count==windowIndex) {
+					break;
+				}
+				count++;
+			}
 		}
 	
 }
