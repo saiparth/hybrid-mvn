@@ -1,0 +1,120 @@
+INFO    2017-01-18 21:38:43,719 [main] Machines.TestExecutor  - executing sheet executor method
+ERROR   2017-01-18 21:38:43,785 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:38:43,822 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:38:43,943 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 21:38:44,068 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:38:44,126 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:38:44,158 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:38:44,262 [main] Machines.TestExecutor  - input value = storethiswinhandle
+ERROR   2017-01-18 21:38:44,321 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:38:44,368 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:38:44,394 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:38:44,489 [main] Machines.TestExecutor  - input value = find element
+ERROR   2017-01-18 21:38:44,746 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:38:44,800 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:38:44,826 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:38:44,930 [main] Machines.TestExecutor  - input value = switchtowindow
+ERROR   2017-01-18 21:38:45,033 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:38:45,076 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:38:45,104 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:38:45,198 [main] Machines.TestExecutor  - input value = close
+ERROR   2017-01-18 21:38:45,252 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:38:45,294 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:38:45,325 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:38:45,417 [main] Machines.TestExecutor  - input value = switchtoparentwindow
+ERROR   2017-01-18 21:38:45,469 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:38:45,511 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:38:45,540 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:38:45,627 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 21:38:47,100 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:38:47,176 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:38:47,210 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:38:47,281 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:38:47,319 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:38:47,378 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:38:47,399 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:38:47,443 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:38:47,463 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:38:47,512 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:38:47,586 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:39:49,595 [main] Machines.TestExecutor  - executing sheet executor method
+ERROR   2017-01-18 21:39:49,661 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:39:49,710 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:39:49,874 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 21:39:51,438 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:39:51,574 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:39:51,603 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:39:51,707 [main] Machines.TestExecutor  - input value = storethiswinhandle
+ERROR   2017-01-18 21:39:51,762 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:39:51,813 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:39:51,840 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:39:51,937 [main] Machines.TestExecutor  - input value = find element
+ERROR   2017-01-18 21:39:52,883 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:39:52,985 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:39:53,020 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:39:53,126 [main] Machines.TestExecutor  - input value = switchtowindow
+ERROR   2017-01-18 21:39:53,219 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:39:53,266 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:39:53,291 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:39:53,384 [main] Machines.TestExecutor  - input value = close
+ERROR   2017-01-18 21:39:53,605 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:39:53,684 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:39:53,710 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:39:53,800 [main] Machines.TestExecutor  - input value = switchtoparentwindow
+ERROR   2017-01-18 21:39:53,853 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:39:53,906 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:39:53,929 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:39:54,018 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 21:39:57,830 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:39:57,910 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:39:57,937 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:39:57,978 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:39:58,003 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:39:58,045 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:39:58,065 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:39:58,108 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:39:58,129 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:39:58,181 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:39:58,253 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:43:01,544 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 21:43:01,547 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 21:43:01,548 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 21:43:09,193 [main] Machines.TestExecutor  - executing sheet executor method
+ERROR   2017-01-18 21:43:09,259 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:43:09,296 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:43:09,416 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 21:43:10,433 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:43:10,494 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:43:10,525 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:43:10,628 [main] Machines.TestExecutor  - input value = storethiswinhandle
+ERROR   2017-01-18 21:43:10,688 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:43:10,741 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:43:10,769 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:43:10,865 [main] Machines.TestExecutor  - input value = find element
+ERROR   2017-01-18 21:43:11,208 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:43:11,289 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:43:11,325 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:43:11,434 [main] Machines.TestExecutor  - input value = switchtowindow
+ERROR   2017-01-18 21:43:11,524 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:43:11,576 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:43:11,605 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:43:11,703 [main] Machines.TestExecutor  - input value = close
+ERROR   2017-01-18 21:43:11,790 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:43:11,856 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:43:11,889 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:43:11,986 [main] Machines.TestExecutor  - input value = switchtoparentwindow
+ERROR   2017-01-18 21:43:12,036 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:43:12,080 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:43:12,104 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 21:43:12,194 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 21:43:14,969 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 21:43:15,013 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:43:15,038 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:43:15,084 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:43:15,109 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:43:15,156 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:43:15,178 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:43:15,229 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:43:15,250 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:43:15,298 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+ERROR   2017-01-18 21:43:15,378 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException

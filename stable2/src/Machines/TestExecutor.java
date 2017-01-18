@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.Alert;
@@ -12,19 +14,23 @@ import org.openqa.selenium.WebElement;
 public class TestExecutor extends MultiGetelement {
 	static String parent = null;
 	//static double iteratorCount=1;
+	static Logger log=Logger.getLogger(TestExecutor.class);
+	//PropertyConfigurator.configure("log4j.properties");
 	public static String actionPerformer(int i, WebDriver wd, String sheetName, String path,String scPath, String repoPath, int columnToRefer)
 			throws EncryptedDocumentException, InvalidFormatException, IOException {
 		//it will provide null pointer exception if input is blank
+		PropertyConfigurator.configure("log4j.properties");
 		String status = "PASS",input = "";
 		String repoSheetname="objectRepository";
-		
+		log.info("Starting testing");
 		statusWriter(i, sheetName, status, path, 6);
 		try {
 			 input = ExcelUtils.reader(sheetName, i, columnToRefer, path).toString().toLowerCase();
+			 log.info("input value = "+input);
 			} 
 		catch (Exception e) 
 			{
-			System.out.println("inside actionperformer,unable to get input");
+			log.error("inside actionperformer,unable to get input");
 			}
 			
 			if (input.contains("find element"))
@@ -54,11 +60,11 @@ public class TestExecutor extends MultiGetelement {
 							, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString()).size();
 						if (size > 0) 
 						{
-						System.out.println("element is present");
+						log.debug("element is present");
 						} 
 						else
 						{
-						System.out.println("element is not present");
+							log.debug("element is not present");
 						}
 					break;
 				case "isdisplayed":
@@ -69,6 +75,7 @@ public class TestExecutor extends MultiGetelement {
 					catch (Exception e) 
 					{
 						helpingfunctions.takeScreenShot(wd, scPath);
+						log.error("Element not displayed"+e);
 					}
 					break;
 				}
@@ -76,6 +83,7 @@ public class TestExecutor extends MultiGetelement {
 				status = "FAIL " + e.getMessage();
 				statusWriter(i, sheetName, status, path, 6);
 				helpingfunctions.takeScreenShot(wd, scPath);
+				log.error("Problem with action on web elements"+e);
 			}
 
 		} else {
@@ -87,7 +95,7 @@ public class TestExecutor extends MultiGetelement {
 				} catch (Exception e) {
 					status = "FAIL" + e.getMessage();
 					statusWriter(i, sheetName, status, path, 6);
-					helpingfunctions.takeScreenShot(wd, scPath);
+					helpingfunctions.takeScreenShot(wd, scPath);log.error(status);
 				}
 				break;
 
@@ -98,7 +106,7 @@ public class TestExecutor extends MultiGetelement {
 				} catch (Exception e) {
 					status = "FAIL" + e.getMessage();
 					statusWriter(i, sheetName, status, path, 6);
-					helpingfunctions.takeScreenShot(wd, scPath);
+					helpingfunctions.takeScreenShot(wd, scPath);log.error(status);
 				}
 				break;
 				
@@ -109,7 +117,7 @@ public class TestExecutor extends MultiGetelement {
 				} catch (Exception e) {
 					status = "FAIL" + e.getMessage();
 					statusWriter(i, sheetName, status, path, 6);
-					helpingfunctions.takeScreenShot(wd, scPath);
+					helpingfunctions.takeScreenShot(wd, scPath);log.error(status);
 				}
 				break;
 				
@@ -119,7 +127,7 @@ public class TestExecutor extends MultiGetelement {
 				} catch (Exception e) {
 					status = "FAIL" + e.getMessage();
 					statusWriter(i, sheetName, status, path, 6);
-					helpingfunctions.takeScreenShot(wd, scPath);
+					helpingfunctions.takeScreenShot(wd, scPath);log.error(status);
 				}
 				break;
 				
@@ -129,7 +137,7 @@ public class TestExecutor extends MultiGetelement {
 				} catch (Exception e) {
 					status = "FAIL" + e.getMessage();
 					statusWriter(i, sheetName, status, path, 6);
-					helpingfunctions.takeScreenShot(wd, scPath);
+					helpingfunctions.takeScreenShot(wd, scPath);log.error(status);
 				}
 				break;
 				
@@ -141,7 +149,7 @@ public class TestExecutor extends MultiGetelement {
 				} catch (Exception e) {
 					status = "FAIL" + e.getMessage();
 					statusWriter(i, sheetName, status, path, 6);
-					helpingfunctions.takeScreenShot(wd, scPath);
+					helpingfunctions.takeScreenShot(wd, scPath);log.error(status);
 				}
 				break;
 				
@@ -152,7 +160,7 @@ public class TestExecutor extends MultiGetelement {
 				} catch (Exception e) {
 					status = "FAIL" + e.getMessage();
 					statusWriter(i, sheetName, status, path, 6);
-					helpingfunctions.takeScreenShot(wd, scPath);
+					helpingfunctions.takeScreenShot(wd, scPath);log.error(status);
 				}
 				break;
 				
@@ -167,7 +175,7 @@ public class TestExecutor extends MultiGetelement {
 				} catch (Exception e) {
 					status = "FAIL" + e.getMessage();
 					statusWriter(i, sheetName, status, path, 6);
-					helpingfunctions.takeScreenShot(wd, scPath);
+					helpingfunctions.takeScreenShot(wd, scPath);log.error(status);
 				}
 				break;
 			case "sleep":
@@ -175,7 +183,7 @@ public class TestExecutor extends MultiGetelement {
 				try {
 					 sleeptime = counter(i, sheetName, 3, path);
 				} catch (Exception e) {
-					System.out.println("problem in rendering sleeptime");
+					System.out.println("problem in rendering sleeptime");log.error(status);
 				}
 				 
 				try {
@@ -183,7 +191,7 @@ public class TestExecutor extends MultiGetelement {
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 					status = "FAIL " + e1.getMessage();
-					statusWriter(i, sheetName, status, path, 6);
+					statusWriter(i, sheetName, status, path, 6);log.error(status);
 				}
 				break;
 				
@@ -192,7 +200,7 @@ public class TestExecutor extends MultiGetelement {
 				try {
 					NumOfIteration = counter(i, sheetName, 3, path);
 				} catch (Exception e) {
-					System.out.println("executeSheetwithinsheet - no count mentioned");
+					log.info("executeSheetwithinsheet - no count mentioned");
 				}
 				try
 				{
@@ -205,11 +213,11 @@ public class TestExecutor extends MultiGetelement {
 				catch (Exception e) {
 					status = "FAIL " + e.getMessage();
 					statusWriter(i, sheetName, status, path, 7);
-					helpingfunctions.takeScreenShot(wd, scPath);
+					helpingfunctions.takeScreenShot(wd, scPath);log.error(status);
 				}
 				break;
 			default:
-				System.out.println("unable to find by id method");
+				log.error("unable to find by id method");
 				break;
 			}
 		}
@@ -220,10 +228,12 @@ public class TestExecutor extends MultiGetelement {
 	//executorSheetName,rowNum,executer sheet path,
 	public static String sheetExecutor( int i, String path, WebDriver wd, String scPath, 
 			String repoPath, String status, String sheethameToBExecuted, long iteratorCount) throws EncryptedDocumentException, InvalidFormatException, IOException {
+		PropertyConfigurator.configure("log4j.properties");
 		List<String> statuslist = new ArrayList<>();
 		// get the sheet name which will be executed
 		//String sheethameToBExecuted = TestExecutor.SpecialFunctions(i, executorSheetName, path);
 		//long f=(long)iteratorCount;
+		log.info("executing sheet executor method");
 		String sheetWiseResult;
 		//To execute suite of sheets number of times=iterator count
 		for (int c = 1; c <= iteratorCount; c++)
@@ -240,7 +250,7 @@ public class TestExecutor extends MultiGetelement {
 				} 
 				catch (Exception e) 
 				{
-					//System.out.println("if is blank");
+					log.error("checkIfCondition in method sheetExecutor"+e);
 				}
 						if(checkIfCondition==true)
 						{
@@ -251,7 +261,7 @@ public class TestExecutor extends MultiGetelement {
 							} 
 							catch (Exception e) 
 							{
-								//System.out.println("breaker found in action type");
+								log.error("breaker in method sheetExecutor"+e);
 							}
 							//If blank value is there then break loop of special scenario
 								if(breaker==true)
@@ -269,7 +279,7 @@ public class TestExecutor extends MultiGetelement {
 								} 
 								catch (Exception e) 
 								{
-									//System.out.println("breaker found in special action type");
+									log.error("emty cells in method sheetExecutor "+e);
 								}
 								//If blank value is there then break loop of special scenario
 									if(breaker2==true)
@@ -295,7 +305,6 @@ public class TestExecutor extends MultiGetelement {
 		} else {
 			 sheetWiseResult = "PASS";
 		}
-		
 		
 		return sheetWiseResult;
 	

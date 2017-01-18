@@ -3,6 +3,8 @@ package Machines;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,11 +16,15 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class DriverBase extends TestExecutor {
 	static String propertiesFilepath = "F:\\stable\\config.properties";
 	static double iteratorCount = 1;
-
+	static Logger log=Logger.getLogger(DriverBase.class);
 	public static void main(String[] args) throws IOException, IllegalStateException, InvalidFormatException {
+		PropertyConfigurator.configure("log4j.properties");
 		String path = ExcelUtils.propertyReader(propertiesFilepath, "path");
+		log.info("excution sheet path ="+path);
 		String scPath = ExcelUtils.propertyReader(propertiesFilepath, "scPath");
+		log.info("excution screen shot path ="+scPath);
 		String repoPath = ExcelUtils.propertyReader(propertiesFilepath, "repoPath");
+		log.info("excution object repository path ="+repoPath);
 		WebDriver wd = null;
 
 		// to execute scenario's
@@ -32,22 +38,27 @@ public class DriverBase extends TestExecutor {
 				// check which browser to be used
 				switch (TestExecutor.ActionType(i, executorSheetName, path).toLowerCase()) {
 				case "firefox":
+					log.info("Starting execution in Firefox");
 					System.setProperty("webdriver.gecko.driver", "F:\\libs\\geckodriver.exe");
 					wd = new FirefoxDriver();
 					break;
 				case "chrome":
+					log.info("Starting execution in Chrome");
 					System.setProperty("webdriver.chrome.driver", "F:\\libs\\chromedriver.exe");
 					wd = new ChromeDriver();
 					break;
 				case "internet explorer":
+					log.info("Starting execution in IE");
 					wd = new InternetExplorerDriver();
 					break;
 				case "phantom js":
+					log.info("Starting execution in Phantom JS");
 					DesiredCapabilities dis = DesiredCapabilities.phantomjs();
 					dis.setJavascriptEnabled(true);
+					//System.setProperty("webdriver.chrome.driver", "F:\\eclipse new\\eclipse\\phantomjs.exe");
 					wd = new PhantomJSDriver();
 				default:
-					System.out.println("unsupported browser");
+					System.out.println("unsupported browser"+TestExecutor.ActionType(i, executorSheetName, path).toLowerCase());
 					break;
 				}
 				wd.manage().window().maximize();
@@ -61,7 +72,7 @@ public class DriverBase extends TestExecutor {
 				} 
 				catch (Exception e) 
 				{
-					System.out.println("no iteratorCount given,Sheet will be executed 1 time");
+					log.error("no iteratorCount given,Sheet will be executed 1 time");
 				}
 				long iteratorCountLong = (long) iteratorCount;
 
