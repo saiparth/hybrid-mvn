@@ -48,6 +48,7 @@ public class DriverBase extends TestExecutor {
 					wd = new ChromeDriver();
 					break;
 				case "internet explorer":
+				System.setProperty("webdriver.chrome.driver", "F:\\libs\\IEDriverServer.exe");
 					log.info("Starting execution in IE");
 					wd = new InternetExplorerDriver();
 					break;

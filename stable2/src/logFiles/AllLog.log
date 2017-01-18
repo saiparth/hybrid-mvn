@@ -118,3 +118,7 @@ ERROR   2017-01-18 21:43:15,229 [main] Machines.TestExecutor  - checkIfCondition
 ERROR   2017-01-18 21:43:15,250 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
 ERROR   2017-01-18 21:43:15,298 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
 ERROR   2017-01-18 21:43:15,378 [main] Machines.TestExecutor  - breaker in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 21:54:53,793 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 21:54:53,797 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 21:54:53,797 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 21:54:55,788 [main] Machines.DriverBase  - Starting execution in IE
