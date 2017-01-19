@@ -122,3 +122,217 @@ INFO    2017-01-18 21:54:53,793 [main] Machines.DriverBase  - excution sheet pat
 INFO    2017-01-18 21:54:53,797 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
 INFO    2017-01-18 21:54:53,797 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
 INFO    2017-01-18 21:54:55,788 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:04:07,146 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:04:07,192 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:04:07,193 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:04:15,965 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:06:09,466 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:06:09,469 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:06:09,470 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:06:11,608 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:06:34,067 [main] Machines.TestExecutor  - executing sheet executor method
+ERROR   2017-01-18 22:06:34,158 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:06:34,244 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:06:34,407 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 22:06:34,816 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:06:34,886 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:06:34,920 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:06:35,033 [main] Machines.TestExecutor  - input value = storethiswinhandle
+ERROR   2017-01-18 22:06:35,103 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:06:35,159 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:06:35,191 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:06:35,297 [main] Machines.TestExecutor  - input value = find element
+ERROR   2017-01-18 22:06:41,833 [main] Machines.TestExecutor  - Problem with action on web elementsorg.openqa.selenium.NoSuchElementException: Unable to find element with xpath == html/body/a (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 5.06 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: 'unknown', revision: '2aa21c1', time: '2016-08-02 14:59:43 -0700'
+System info: host: 'Sai', ip: '192.168.43.166', os.name: 'Windows 8.1', os.arch: 'x86', os.version: '6.3', java.version: '1.8.0_101'
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{browserAttachTimeout=0, ie.enableFullPageScreenshot=true, enablePersistentHover=true, ie.forceCreateProcessApi=false, ie.forceShellWindowsApi=false, pageLoadStrategy=normal, ignoreZoomSetting=false, ie.fileUploadDialogTimeout=3000, version=11, platform=WINDOWS, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, browserName=internet explorer, initialBrowserUrl=http://localhost:48202/, javascriptEnabled=true, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true, unexpectedAlertBehaviour=dismiss}]
+Session ID: 1554617f-6e59-4088-bbeb-9a4ae8fd25db
+*** Element info: {Using=xpath, value=html/body/a}
+ERROR   2017-01-18 22:06:41,949 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:06:41,985 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:06:42,095 [main] Machines.TestExecutor  - input value = switchtowindow
+ERROR   2017-01-18 22:06:42,501 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:06:42,558 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:06:42,584 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:06:42,678 [main] Machines.TestExecutor  - input value = close
+ERROR   2017-01-18 22:06:42,747 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:06:42,842 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:06:43,002 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:06:43,161 [main] Machines.TestExecutor  - input value = switchtoparentwindow
+INFO    2017-01-18 22:07:55,211 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:07:55,214 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:07:55,215 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:07:57,137 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:08:03,064 [main] Machines.TestExecutor  - executing sheet executor method
+ERROR   2017-01-18 22:08:03,148 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:08:03,209 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:08:03,335 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 22:08:03,710 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:08:03,776 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:08:03,814 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:08:03,947 [main] Machines.TestExecutor  - input value = storethiswinhandle
+ERROR   2017-01-18 22:08:04,023 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:08:04,087 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:08:04,120 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:08:04,252 [main] Machines.TestExecutor  - input value = find element
+ERROR   2017-01-18 22:08:38,594 [main] Machines.TestExecutor  - Problem with action on web elementsorg.openqa.selenium.NoSuchElementException: Unable to find element with xpath == html/body/a (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 5.27 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: 'unknown', revision: '2aa21c1', time: '2016-08-02 14:59:43 -0700'
+System info: host: 'Sai', ip: '127.0.0.1', os.name: 'Windows 8.1', os.arch: 'x86', os.version: '6.3', java.version: '1.8.0_101'
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{browserAttachTimeout=0, ie.enableFullPageScreenshot=true, enablePersistentHover=true, ie.forceCreateProcessApi=false, ie.forceShellWindowsApi=false, pageLoadStrategy=normal, ignoreZoomSetting=false, ie.fileUploadDialogTimeout=3000, version=11, platform=WINDOWS, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, browserName=internet explorer, initialBrowserUrl=http://localhost:22656/, javascriptEnabled=true, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true, unexpectedAlertBehaviour=dismiss}]
+Session ID: ec792602-422c-43b3-8c8e-45a3b9e79fdb
+*** Element info: {Using=xpath, value=html/body/a}
+ERROR   2017-01-18 22:08:38,659 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:08:38,691 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:08:38,785 [main] Machines.TestExecutor  - input value = switchtowindow
+ERROR   2017-01-18 22:08:39,121 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:08:39,166 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:08:39,191 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:08:39,287 [main] Machines.TestExecutor  - input value = close
+ERROR   2017-01-18 22:08:39,357 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:08:39,403 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:08:39,436 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:08:39,526 [main] Machines.TestExecutor  - input value = switchtoparentwindow
+INFO    2017-01-18 22:10:26,782 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:10:26,785 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:10:26,786 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:10:28,818 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:10:34,155 [main] Machines.TestExecutor  - executing sheet executor method
+ERROR   2017-01-18 22:10:34,221 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:10:34,269 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:10:34,395 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 22:10:34,953 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:10:35,022 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:10:35,059 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:10:35,176 [main] Machines.TestExecutor  - input value = storethiswinhandle
+ERROR   2017-01-18 22:10:35,242 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:10:35,301 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:10:35,331 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:10:35,435 [main] Machines.TestExecutor  - input value = find element
+ERROR   2017-01-18 22:10:39,231 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:10:39,306 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:10:39,337 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:10:39,445 [main] Machines.TestExecutor  - input value = switchtowindow
+ERROR   2017-01-18 22:10:41,259 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:10:41,328 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:10:41,364 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:10:41,460 [main] Machines.TestExecutor  - input value = close
+ERROR   2017-01-18 22:10:41,626 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:10:41,744 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:10:41,781 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:10:41,872 [main] Machines.TestExecutor  - input value = switchtoparentwindow
+INFO    2017-01-18 22:11:58,539 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:11:58,542 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:11:58,542 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:12:00,625 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:12:30,271 [main] Machines.TestExecutor  - executing sheet executor method
+ERROR   2017-01-18 22:12:30,409 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:12:30,453 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:12:30,585 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 22:12:31,122 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:12:31,185 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:12:31,226 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:12:31,342 [main] Machines.TestExecutor  - input value = storethiswinhandle
+ERROR   2017-01-18 22:12:31,420 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:12:31,472 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:12:31,501 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:12:31,607 [main] Machines.TestExecutor  - input value = find element
+ERROR   2017-01-18 22:12:37,213 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:12:37,299 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:12:37,358 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:12:37,484 [main] Machines.TestExecutor  - input value = switchtowindow
+ERROR   2017-01-18 22:12:39,479 [main] Machines.TestExecutor  - FAILNo window found (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 1.37 seconds
+Build info: version: 'unknown', revision: '2aa21c1', time: '2016-08-02 14:59:43 -0700'
+System info: host: 'Sai', ip: '127.0.0.1', os.name: 'Windows 8.1', os.arch: 'x86', os.version: '6.3', java.version: '1.8.0_101'
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{browserAttachTimeout=0, ie.enableFullPageScreenshot=true, enablePersistentHover=true, ie.forceCreateProcessApi=false, ie.forceShellWindowsApi=false, pageLoadStrategy=normal, ignoreZoomSetting=false, ie.fileUploadDialogTimeout=3000, version=11, platform=WINDOWS, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, browserName=internet explorer, initialBrowserUrl=http://localhost:13864/, javascriptEnabled=true, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true, unexpectedAlertBehaviour=dismiss}]
+Session ID: 5efa2654-4b21-4b4b-8a4a-b4ec0cf3a6ed
+ERROR   2017-01-18 22:12:39,544 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:12:39,572 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:12:39,669 [main] Machines.TestExecutor  - input value = close
+ERROR   2017-01-18 22:12:39,766 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:12:39,824 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:12:39,856 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:12:39,952 [main] Machines.TestExecutor  - input value = switchtoparentwindow
+INFO    2017-01-18 22:16:45,633 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:16:45,636 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:16:45,637 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:16:47,539 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:17:15,660 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:17:15,663 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:17:15,664 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:17:17,571 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:19:17,672 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:19:17,675 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:19:17,675 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:19:19,587 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:23:41,177 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:23:41,180 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:23:41,181 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:23:43,125 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:25:02,726 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:25:02,729 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:25:02,729 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:25:04,632 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:25:10,937 [main] Machines.TestExecutor  - executing sheet executor method
+ERROR   2017-01-18 22:25:11,004 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:25:11,041 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:25:11,163 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 22:25:11,382 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:25:11,445 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:25:11,474 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:25:11,608 [main] Machines.TestExecutor  - input value = storethiswinhandle
+INFO    2017-01-18 22:25:32,418 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:25:32,421 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:25:32,421 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:25:34,323 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:25:39,278 [main] Machines.TestExecutor  - executing sheet executor method
+ERROR   2017-01-18 22:25:39,347 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:25:39,385 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:25:39,505 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 22:25:39,728 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:25:39,789 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:25:39,824 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:25:39,961 [main] Machines.TestExecutor  - input value = storethiswinhandle
+INFO    2017-01-18 22:26:33,401 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:26:33,404 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:26:33,404 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:26:35,400 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:26:40,368 [main] Machines.TestExecutor  - executing sheet executor method
+ERROR   2017-01-18 22:26:40,434 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:26:40,471 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:26:40,591 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 22:26:40,834 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:26:40,896 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:26:40,931 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:26:41,064 [main] Machines.TestExecutor  - input value = storethiswinhandle
+INFO    2017-01-18 22:30:17,096 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:30:17,100 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:30:17,100 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:30:19,040 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:30:23,543 [main] Machines.TestExecutor  - executing sheet executor method
+ERROR   2017-01-18 22:30:23,613 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:30:23,653 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:30:23,772 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 22:30:23,998 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:30:24,059 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:30:24,094 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:30:24,227 [main] Machines.TestExecutor  - input value = storethiswinhandle
+INFO    2017-01-18 22:32:36,206 [main] Machines.DriverBase  - excution sheet path =C:\Users\partha\Desktop\excelLib.xlsx
+INFO    2017-01-18 22:32:36,210 [main] Machines.DriverBase  - excution screen shot path =C:\Users\partha\Desktop
+INFO    2017-01-18 22:32:36,210 [main] Machines.DriverBase  - excution object repository path =C:\Users\partha\Desktop\objectrepository.xlsx
+INFO    2017-01-18 22:32:38,162 [main] Machines.DriverBase  - Starting execution in IE
+INFO    2017-01-18 22:32:42,890 [main] Machines.TestExecutor  - executing sheet executor method
+ERROR   2017-01-18 22:32:42,956 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:32:42,996 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:32:43,121 [main] Machines.TestExecutor  - input value = geturl
+ERROR   2017-01-18 22:32:43,349 [main] Machines.TestExecutor  - emty cells in method sheetExecutor java.lang.NullPointerException
+ERROR   2017-01-18 22:32:43,407 [main] Machines.TestExecutor  - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+INFO    2017-01-18 22:32:43,442 [main] Machines.TestExecutor  - Starting testing
+INFO    2017-01-18 22:32:43,577 [main] Machines.TestExecutor  - input value = storethiswinhandle

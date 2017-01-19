@@ -48,14 +48,16 @@ public class DriverBase extends TestExecutor {
 					wd = new ChromeDriver();
 					break;
 				case "internet explorer":
-				System.setProperty("webdriver.chrome.driver", "F:\\libs\\IEDriverServer.exe");
+				System.setProperty("webdriver.ie.driver", "F:\\libs\\IEDriverServer.exe");
 					log.info("Starting execution in IE");
-					wd = new InternetExplorerDriver();
+					DesiredCapabilities dis=DesiredCapabilities.internetExplorer();
+					dis.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+					wd = new InternetExplorerDriver(dis);
 					break;
 				case "phantom js":
 					log.info("Starting execution in Phantom JS");
-					DesiredCapabilities dis = DesiredCapabilities.phantomjs();
-					dis.setJavascriptEnabled(true);
+					DesiredCapabilities cap = DesiredCapabilities.phantomjs();
+					cap.setJavascriptEnabled(true);
 					//System.setProperty("webdriver.chrome.driver", "F:\\eclipse new\\eclipse\\phantomjs.exe");
 					wd = new PhantomJSDriver();
 				default:

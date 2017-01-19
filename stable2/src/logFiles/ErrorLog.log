@@ -94,3 +94,84 @@
 2017-01-18 21:01:250 ERROR TestExecutor:264 - breaker in method sheetExecutorjava.lang.NullPointerException
 2017-01-18 21:01:298 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
 2017-01-18 21:01:378 ERROR TestExecutor:264 - breaker in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:158 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:816 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:886 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:103 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:159 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:833 ERROR TestExecutor:86 - Problem with action on web elementsorg.openqa.selenium.NoSuchElementException: Unable to find element with xpath == html/body/a (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 5.06 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: 'unknown', revision: '2aa21c1', time: '2016-08-02 14:59:43 -0700'
+System info: host: 'Sai', ip: '192.168.43.166', os.name: 'Windows 8.1', os.arch: 'x86', os.version: '6.3', java.version: '1.8.0_101'
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{browserAttachTimeout=0, ie.enableFullPageScreenshot=true, enablePersistentHover=true, ie.forceCreateProcessApi=false, ie.forceShellWindowsApi=false, pageLoadStrategy=normal, ignoreZoomSetting=false, ie.fileUploadDialogTimeout=3000, version=11, platform=WINDOWS, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, browserName=internet explorer, initialBrowserUrl=http://localhost:48202/, javascriptEnabled=true, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true, unexpectedAlertBehaviour=dismiss}]
+Session ID: 1554617f-6e59-4088-bbeb-9a4ae8fd25db
+*** Element info: {Using=xpath, value=html/body/a}
+2017-01-18 22:01:949 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:501 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:558 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:747 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:842 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:148 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:710 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:776 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:23 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:87 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:594 ERROR TestExecutor:86 - Problem with action on web elementsorg.openqa.selenium.NoSuchElementException: Unable to find element with xpath == html/body/a (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 5.27 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: 'unknown', revision: '2aa21c1', time: '2016-08-02 14:59:43 -0700'
+System info: host: 'Sai', ip: '127.0.0.1', os.name: 'Windows 8.1', os.arch: 'x86', os.version: '6.3', java.version: '1.8.0_101'
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{browserAttachTimeout=0, ie.enableFullPageScreenshot=true, enablePersistentHover=true, ie.forceCreateProcessApi=false, ie.forceShellWindowsApi=false, pageLoadStrategy=normal, ignoreZoomSetting=false, ie.fileUploadDialogTimeout=3000, version=11, platform=WINDOWS, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, browserName=internet explorer, initialBrowserUrl=http://localhost:22656/, javascriptEnabled=true, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true, unexpectedAlertBehaviour=dismiss}]
+Session ID: ec792602-422c-43b3-8c8e-45a3b9e79fdb
+*** Element info: {Using=xpath, value=html/body/a}
+2017-01-18 22:01:659 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:121 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:166 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:357 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:403 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:221 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:953 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:22 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:242 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:301 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:231 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:306 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:259 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:328 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:626 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:744 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:409 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:122 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:185 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:420 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:472 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:213 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:299 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:479 ERROR TestExecutor:120 - FAILNo window found (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 1.37 seconds
+Build info: version: 'unknown', revision: '2aa21c1', time: '2016-08-02 14:59:43 -0700'
+System info: host: 'Sai', ip: '127.0.0.1', os.name: 'Windows 8.1', os.arch: 'x86', os.version: '6.3', java.version: '1.8.0_101'
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{browserAttachTimeout=0, ie.enableFullPageScreenshot=true, enablePersistentHover=true, ie.forceCreateProcessApi=false, ie.forceShellWindowsApi=false, pageLoadStrategy=normal, ignoreZoomSetting=false, ie.fileUploadDialogTimeout=3000, version=11, platform=WINDOWS, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, browserName=internet explorer, initialBrowserUrl=http://localhost:13864/, javascriptEnabled=true, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true, unexpectedAlertBehaviour=dismiss}]
+Session ID: 5efa2654-4b21-4b4b-8a4a-b4ec0cf3a6ed
+2017-01-18 22:01:544 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:766 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:824 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:04 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:382 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:445 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:347 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:728 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:789 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:434 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:834 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:896 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:613 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:998 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:59 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:956 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-01-18 22:01:349 ERROR TestExecutor:282 - emty cells in method sheetExecutor java.lang.NullPointerException
+2017-01-18 22:01:407 ERROR TestExecutor:253 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
