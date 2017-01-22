@@ -1,5 +1,6 @@
 package Machines;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -12,9 +13,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.BeforeTest;
 
 public class DriverBase extends TestExecutor {
-	static String propertiesFilepath = "F:\\stable\\config.properties";
+	static String propertiesFilepath= "F:\\stable\\config.properties";;
+	File file=new File(propertiesFilepath);
+	@BeforeTest
+	public void fileExistChecker() throws Exception{
+		if (!file.exists()) {
+			throw new Exception("Base file not found");
+		}
+	}
+	
 	static double iteratorCount = 1;
 	static Logger log=Logger.getLogger(DriverBase.class);
 	public static void main(String[] args) throws IOException, IllegalStateException, InvalidFormatException {
@@ -22,7 +32,7 @@ public class DriverBase extends TestExecutor {
 		String path = ExcelUtils.propertyReader(propertiesFilepath, "path");
 		log.info("excution sheet path ="+path);
 		String scPath = ExcelUtils.propertyReader(propertiesFilepath, "scPath");
-		log.info("excution screen shot path ="+scPath);
+		log.info("excution sc reen shot path ="+scPath);
 		String repoPath = ExcelUtils.propertyReader(propertiesFilepath, "repoPath");
 		log.info("excution object repository path ="+repoPath);
 		WebDriver wd = null;
@@ -33,7 +43,8 @@ public class DriverBase extends TestExecutor {
 		// loop through sheet suite
 		for (int i = 1; i <= ExcelUtils.getRowCount(executorSheetName, path); i++) {
 			// check which sheet should be executed
-			if (TestExecutor.SpecialActionType(i, executorSheetName, path).contains("YES")) {
+			if (TestExecutor.SpecialActionType(i, executorSheetName, path).contains("YES")) 
+			{
 				String status = "PASS";
 				// check which browser to be used
 				switch (TestExecutor.ActionType(i, executorSheetName, path).toLowerCase()) {
@@ -68,6 +79,7 @@ public class DriverBase extends TestExecutor {
 				wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 				wd.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
 				String sheethameToBExecuted = TestExecutor.SpecialFunctions(i, executorSheetName, path);
+				//to check how many number of time sheet should execute
 				try 
 				{
 					iteratorCount = (double) ExcelUtils.reader(executorSheetName, i, 4, path);
@@ -78,21 +90,18 @@ public class DriverBase extends TestExecutor {
 					log.error("no iteratorCount given,Sheet will be executed 1 time");
 				}
 				long iteratorCountLong = (long) iteratorCount;
-
-				status = sheetExecutor(i, path, wd, scPath, repoPath, status, sheethameToBExecuted,
-						iteratorCountLong);
+						status = sheetExecutor(i, path, wd, scPath, repoPath, status, sheethameToBExecuted,
+								iteratorCountLong);
+					
 				
-				if (status == "PASS")
-				{
-					TestExecutor.statusWriter(i, executorSheetName, "PASS", path, 3);
-				} 
+					if (status.contains("FAIL"))
+					{
+						TestExecutor.statusWriter(i, executorSheetName, "FAIL", path, 3);
+					} else {
+						TestExecutor.statusWriter(i, executorSheetName, "PASS", path, 3);
+					}
 				
-				else 
-				{
-					TestExecutor.statusWriter(i, executorSheetName, "FAIL", path, 3);
-				}
-				
-			} else {
+			}else {
 				TestExecutor.statusWriter(i, executorSheetName, "SKIPPED", path, 3);
 			}
 

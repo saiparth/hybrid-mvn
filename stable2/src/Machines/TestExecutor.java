@@ -60,11 +60,11 @@ public class TestExecutor extends MultiGetelement {
 							, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString()).size();
 						if (size > 0) 
 						{
-						log.debug("element is present");
+						log.info("element is present");
 						} 
 						else
 						{
-							log.debug("element is not present");
+						log.info("element is not present");
 						}
 					break;
 				case "isdisplayed":
@@ -115,7 +115,7 @@ public class TestExecutor extends MultiGetelement {
 					long windowIndex=counter(i, sheetName, 3, path);
 					helpingfunctions.windowSwitcher(wd, windowIndex);
 				} catch (Exception e) {
-					status = "FAIL" + e.getMessage();
+					status = "FAIL " + e.getMessage();
 					statusWriter(i, sheetName, status, path, 6);
 					helpingfunctions.takeScreenShot(wd, scPath);log.error(status);
 				}
@@ -135,7 +135,7 @@ public class TestExecutor extends MultiGetelement {
 				try {					
 					 parent=wd.getWindowHandle();
 				} catch (Exception e) {
-					status = "FAIL" + e.getMessage();
+					status = "FAIL " + e.getMessage();
 					statusWriter(i, sheetName, status, path, 6);
 					helpingfunctions.takeScreenShot(wd, scPath);log.error(status);
 				}
@@ -147,7 +147,7 @@ public class TestExecutor extends MultiGetelement {
 					System.out.println(parent);
 					 wd.switchTo().window(parent);
 				} catch (Exception e) {
-					status = "FAIL" + e.getMessage();
+					status = "FAIL " + e.getMessage();
 					statusWriter(i, sheetName, status, path, 6);
 					helpingfunctions.takeScreenShot(wd, scPath);log.error(status);
 				}
