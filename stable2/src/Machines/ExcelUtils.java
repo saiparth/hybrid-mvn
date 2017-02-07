@@ -2,13 +2,10 @@ package Machines;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Properties;
+
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -16,11 +13,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-
-import com.sun.jna.platform.FileUtils;
 
 public class ExcelUtils {
 
@@ -85,7 +77,7 @@ public class ExcelUtils {
 							data = col.getNumericCellValue();
 							break;
 						case Cell.CELL_TYPE_BLANK:
-							System.out.println("Blank cell row "+row+" col "+col+" sheet "+sheetName);
+							System.out.println("Blank value in cell row "+row+" col "+col+" sheet "+sheetName);
 							break;
 						}
 					} else {
