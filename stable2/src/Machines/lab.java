@@ -1,9 +1,10 @@
 package Machines;
 import org.openqa.selenium.WebDriver;
-import org.sikuli.basics.Settings;
 import org.sikuli.script.FindFailed;
-import org.sikuli.script.Pattern;
-import org.sikuli.script.Screen;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class lab {
 static String path="F:\\HybridFrameWork\\src\\Machines\\config.properties";
@@ -24,19 +25,25 @@ static String path="F:\\HybridFrameWork\\src\\Machines\\config.properties";
 		System.out.println("outside thread");
 		
 		
-		ExtentReports extent;
-		extent = new ExtentReports("C:\\Users\\partha\\Desktop\\A", true);
+		*/ExtentReports extent;
+		extent = new ExtentReports("C:\\Users\\partha\\Desktop\\A.html", true);
 		// creates a toggle for the given test, adds all log even       
 		 ExtentTest test = extent.startTest("My First Test");
-		 wd.get("https://www.google.co.in");
+		 //wd.get("https://www.google.co.in");
 		// log(LogStatus, details)  
 		      test.log(LogStatus.INFO,"starting");
 		// report with snapshot    
-		    String img = test.addScreenCapture("C:\\Users\\partha\\Desktop\\a.png");
+		    String img = test.addScreenCapture("C:\\Users\\partha\\Pictures\\Divine6.jpg");
 		    		test.log(LogStatus.INFO, img, "Image example: " );       // end test  
-		    		extent.endTest(test);   
+		    		extent.endTest(test);  
+		    		ExtentTest t2 = extent.startTest("My second Test");
+		    		t2.log(LogStatus.ERROR, img, "Image example: " ); 
+		    		ExtentTest t3 = extent.startTest("My First Test");
+		    		t3.log(LogStatus.FAIL, "C:\\Users\\partha\\Pictures\\Divine6.jpg", "Image example: " ); 
+		    		extent.endTest(t2); 
+		    		extent.endTest(t3); 
 		    		 extent.flush();
-		    		 wd.quit();*/Screen screen = new Screen();
+		    		 /*Screen screen = new Screen();
 
 		    		// Create object of Pattern class and specify the images path
 
@@ -44,7 +51,7 @@ static String path="F:\\HybridFrameWork\\src\\Machines\\config.properties";
 		    		Pattern image1 = new Pattern("F:\\sikulirepo\\notepadclick.PNG");
 
 		    		Pattern image2 = new Pattern("F:\\sikulirepo\\typehere.PNG");
-
+*/
 		    		//Pattern image3 = new Pattern("F:\\sikulirepo\\sendkeys.PNG");
 
 		    	//	WebDriver driver=new FirefoxDriver();
@@ -53,7 +60,7 @@ static String path="F:\\HybridFrameWork\\src\\Machines\\config.properties";
 		    	//	wd.manage().window().maximize();
 
 		    	//	wd.get("http://localhost/login.do");
-		    		Settings.BundlePath="‪F:\\sikulirepo\\excel.PNG";
+		    		/*Settings.BundlePath="‪F:\\sikulirepo\\excel.PNG";
 		    		//Pattern image = new Pattern("F:\\sikulirepo\\excel.PNG");
 		    		System.out.println(Settings.BundlePath);		
 //screen.wait(image, 10);
@@ -67,7 +74,7 @@ static String path="F:\\HybridFrameWork\\src\\Machines\\config.properties";
 		    		//screen.rightClick(image2);
 		    		screen.type(image2,"hai");
 		    		//screen.dragDrop("");
-		    		}}
+*/		    		}}
 
 		    		// using screen object we can call type  method which will accept image path and content which //we have to type and will perform action.
 
