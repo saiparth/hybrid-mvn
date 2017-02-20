@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test name="Test(failed)">
+    <classes>
+      <class name="Machines.threads">
+        <methods>
+          <include name="test"/>
+        </methods>
+      </class> <!-- Machines.threads -->
+      <class name="Machines.DriverBase">
+        <methods>
+          <include name="fileExistChecker"/>
+        </methods>
+      </class> <!-- Machines.DriverBase -->
+      <class name="lab.switchtowindow">
+        <methods>
+          <include name="nested"/>
+        </methods>
+      </class> <!-- lab.switchtowindow -->
+      <class name="Machines.lab2">
+        <methods>
+          <include name="g"/>
+        </methods>
+      </class> <!-- Machines.lab2 -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

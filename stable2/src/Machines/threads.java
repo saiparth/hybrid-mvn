@@ -1,5 +1,6 @@
 package Machines;
 
+import org.testng.annotations.Test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -24,6 +25,7 @@ for (int i = 1; i <= ExcelUtils.getRowCount(sheetName, path); i++) {
 }
 	
 	}//System.setProperty("webdriver.gecko.driver","F:\\libs\\geckodriver.exe");
+	@Test
 	public static void test(String val){
 		//final String val="username";
 		new Thread() {
@@ -56,6 +58,7 @@ for (int i = 1; i <= ExcelUtils.getRowCount(sheetName, path); i++) {
 			}
 		}.start();
 	}
+	@Test
 	static Object test(WebDriver wd) {
 		wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		wd.get("http://localhost/login.do");

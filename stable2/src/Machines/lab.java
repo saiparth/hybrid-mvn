@@ -1,10 +1,15 @@
 package Machines;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.sikuli.script.FindFailed;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+
+
+
+
 
 public class lab {
 static String path="F:\\HybridFrameWork\\src\\Machines\\config.properties";
@@ -18,28 +23,41 @@ static String path="F:\\HybridFrameWork\\src\\Machines\\config.properties";
 		//wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		//wd.get("http://localhost/login.do");
 		//System.out.println(threadstest.runner(wd,"username"));
-		/*System.out.println("completed");
+		System.out.println("completed");
 		System.setProperty("webdriver.chrome.driver","F:\\libs\\chromedriver.exe");
 		 wd=new ChromeDriver();
-		wd.manage().window().maximize();
+		//wd.manage().window().maximize();
 		System.out.println("outside thread");
 		
 		
-		*/ExtentReports extent;
-		extent = new ExtentReports("C:\\Users\\partha\\Desktop\\A.html", true);
+		//String p="F:\.metadata\repo\stable2\test-output\my.html";
+		//File f=new File("F:\\libs\\extentreports-java-v2.41.1\\extent-config.xml");
+		//System.out.println(f.exists());
+		ExtentReports extent=new ExtentReports(System.getProperty("user.dir")+"/test-output/my.html");
+	//	extent.loadConfig(f);
 		// creates a toggle for the given test, adds all log even       
-		 ExtentTest test = extent.startTest("My First Test");
-		 //wd.get("https://www.google.co.in");
+		 ExtentTest test =  extent.startTest("My First Test");
+		 wd.get("http://localhost/login.do");
 		// log(LogStatus, details)  
 		      test.log(LogStatus.INFO,"starting");
 		// report with snapshot    
-		    String img = test.addScreenCapture("C:\\Users\\partha\\Pictures\\Divine6.jpg");
-		    		test.log(LogStatus.INFO, img, "Image example: " );       // end test  
+		    //  wd=new PhantomJSDriver();
+		    //  wd.get("http://localhost/login.do");
+		   // String img = test.addScreenCapture("c:\\Users\\partha\\Pictures\\Divine6.jpg");
+		    	//	test.log(LogStatus.INFO, test.addScreencast("F:\\phone\\whatsap vids\\VID-20160513-WA0000.mp4"), "Image example: " );       // end test  
 		    		extent.endTest(test);  
 		    		ExtentTest t2 = extent.startTest("My second Test");
-		    		t2.log(LogStatus.ERROR, img, "Image example: " ); 
+		    		t2.log(LogStatus.INFO, test.addScreencast("F:\\phone\\whatsap vids\\VID-20160513-WA0000.mp4"), "Image example: " );
 		    		ExtentTest t3 = extent.startTest("My First Test");
-		    		t3.log(LogStatus.FAIL, "C:\\Users\\partha\\Pictures\\Divine6.jpg", "Image example: " ); 
+		    		t3.log(LogStatus.FAIL, "C:\\Users\\partha\\Pictures\\Divine6.jpg", "updateImage example: " ); 
+		    		t2.log(LogStatus.PASS, "C:\\Users\\partha\\Pictures\\Divine6.jpg","Step details");
+		    		t2.log(LogStatus.ERROR, "C:\\Users\\partha\\Pictures\\Divine6.jpg","error");
+		    		t2.log(LogStatus.FAIL, "C:\\Users\\partha\\Pictures\\Divine6.jpg","FAIL");
+		    		t2.log(LogStatus.FATAL,"C:\\Users\\partha\\Pictures\\Divine6.jpg", "FATAL");
+		    		t2.log(LogStatus.INFO, "C:\\Users\\partha\\Pictures\\Divine6.jpg","INFO");
+		    		t3.log(LogStatus.SKIP, "C:\\Users\\partha\\Pictures\\Divine6.jpg","SKIP");
+		    		t3.log(LogStatus.UNKNOWN,"C:\\Users\\partha\\Pictures\\Divine6.jpg", "UNKNOWN");
+		    		t3.log(LogStatus.WARNING,"C:\\Users\\partha\\Pictures\\Divine6.jpg", "WARNING");
 		    		extent.endTest(t2); 
 		    		extent.endTest(t3); 
 		    		 extent.flush();

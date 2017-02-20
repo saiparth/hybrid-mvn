@@ -1,10 +1,9 @@
 package lab;
 
+import org.testng.annotations.Test;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
-
-import org.junit.Test;
 
 
 public class listner {

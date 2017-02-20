@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="0" passed="0">
+<testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="47" started-at="2017-01-15T13:59:12Z" finished-at="2017-01-15T13:59:12Z">
+  <suite name="Default suite" duration-ms="24538" started-at="2017-02-19T06:58:41Z" finished-at="2017-02-19T06:59:06Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="47" started-at="2017-01-15T13:59:12Z" finished-at="2017-01-15T13:59:12Z">
+    <test name="Default test" duration-ms="24538" started-at="2017-02-19T06:58:41Z" finished-at="2017-02-19T06:59:06Z">
+      <class name="Machines.DriverBase">
+        <test-method status="PASS" signature="fileExistChecker()[pri:0, instance:Machines.DriverBase@85bdee]" name="fileExistChecker" is-config="true" duration-ms="26" started-at="2017-02-19T12:28:41Z" finished-at="2017-02-19T12:28:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fileExistChecker -->
+        <test-method status="PASS" signature="mainRunner()[pri:0, instance:Machines.DriverBase@85bdee]" name="mainRunner" duration-ms="24481" started-at="2017-02-19T12:28:41Z" finished-at="2017-02-19T12:29:06Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- mainRunner -->
+      </class> <!-- Machines.DriverBase -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
