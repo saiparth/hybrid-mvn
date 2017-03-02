@@ -21,28 +21,31 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-@Test
 public class DriverBase extends TestExecutor {
-	static String propertiesFilepath= "F:\\stable\\config.properties";;
+	static String propertiesFilepath= System.getProperty("user.dir")+"/config.properties";
+	
 	File file=new File(propertiesFilepath);
+	
 	@BeforeTest
 	public void fileExistChecker() throws Exception{
 		if (!file.exists()) {
+			System.out.println(file);
 			throw new Exception("Base file not found");
 		}
 	}
 	
 	static double iteratorCount = 1;
 	static Logger log=Logger.getLogger(DriverBase.class);
+	@Test
 	public  void mainRunner()  {
-		PropertyConfigurator.configure("F:\\.metadata\\repo\\stable2\\log4j.properties");
-		String path = ExcelUtils.propertyReader(propertiesFilepath, "path");
+		PropertyConfigurator.configure(System.getProperty("user.dir")+"/log4j.properties");
+		String path = System.getProperty("user.dir")+"/excelLib.xlsx";
 		log.info("excution sheet path ="+path);
 		String scPath = ExcelUtils.propertyReader(propertiesFilepath, "scPath");
 		log.info("excution sc reen shot path ="+scPath);
-		String repoPath = ExcelUtils.propertyReader(propertiesFilepath, "repoPath");
+		String repoPath = System.getProperty("user.dir")+"/objectrepository.xlsx";
 		log.info("excution object repository path ="+repoPath);
-		
+	
 		//extent path, it will allow only 3 or 4 column,
 		//o decide inbegining what u wants 
 		ExtentReports	ex=new ExtentReports(System.getProperty("user.dir")+"/test-output/my.html");
@@ -66,17 +69,17 @@ public class DriverBase extends TestExecutor {
 									{
 										case "firefox":
 														test.log(LogStatus.INFO, "Starting test in Firefox");
-														System.setProperty("webdriver.gecko.driver", "F:\\geckodriver.exe");
+														System.setProperty("webdriver.gecko.driver", "D:\\libs\\geckodriver.exe");
 														driver = new FirefoxDriver();
 														break;
 										case "chrome":
 														test.log(LogStatus.INFO, "Starting test in Chrome");
 														//System.setProperty("webdriver.chrome.driver", "F:\\libs\\chromedriver.exe");
-														System.setProperty("webdriver.chrome.driver", "F:\\chromedriver.exe");
+														System.setProperty("webdriver.chrome.driver", "D:\\libs\\chromedriver.exe");
 														driver = new ChromeDriver();
 														break;
 										case "internet explorer":
-														System.setProperty("webdriver.ie.driver", "F:\\libs\\IEDriverServer.exe");
+														System.setProperty("webdriver.ie.driver", "D:\\libs\\IEDriverServer.exe");
 														test.log(LogStatus.INFO, "Starting test in IE");
 														DesiredCapabilities dis=DesiredCapabilities.internetExplorer();
 														dis.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
