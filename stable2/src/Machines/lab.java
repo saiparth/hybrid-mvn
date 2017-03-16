@@ -2,6 +2,7 @@ package Machines;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.sikuli.script.FindFailed;
+import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -12,8 +13,13 @@ import com.relevantcodes.extentreports.LogStatus;
 
 
 public class lab {
+	@Test
+	void t(){
+		System.out.println("hai");
+	}
 static String path="F:\\HybridFrameWork\\src\\Machines\\config.properties";
-	public static void main(String[] args) throws FindFailed, InterruptedException {
+@Test
+	public static void main() throws FindFailed, InterruptedException {
 		//DesiredCapabilities ds = DesiredCapabilities.firefox();
 		//ds.setCapability("marionette", true);
 		//ds.setJavascriptEnabled(true);*/

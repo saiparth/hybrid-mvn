@@ -1,0 +1,38 @@
+Value					Column numbers
+element locator 		4
+performType				5 
+(Supported actions are 
+sendkeys
+click
+clear
+verifyelement
+isdisplayed
+mousehover
+doubleclick)
+action type				1 or 2
+(Supported actions are 
+geturl					3
+checkalllinks			no parameters
+checkallimages			no parameters
+gettitle				no parameters
+switchtowindow			4
+close					no parameters
+storethiswinhandle		no parameters
+switchtoparentwindow	
+switchtoactiveelement
+switchtodefaultcontent
+switchtoframe			3 provide object repo id
+alert					4
+asserttitle				4
+drag drop by element	SourceRowToRefer-(dont include 0 in index) 5
+						dropRowToRefer 6
+drag drop by coordinates SourceRowToRefer 4
+						xOffset 5
+						yOffset 6
+sleep					4
+executesheet			iterator count =4
+						sheet name =6
+
+
+
+

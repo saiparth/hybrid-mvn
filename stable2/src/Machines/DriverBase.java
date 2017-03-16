@@ -26,18 +26,18 @@ public class DriverBase extends TestExecutor {
 	
 	File file=new File(propertiesFilepath);
 	
-	@BeforeTest
+	/*@BeforeTest
 	public void fileExistChecker() throws Exception{
 		if (!file.exists()) {
 			System.out.println(file);
 			throw new Exception("Base file not found");
 		}
 	}
-	
+	*/
 	static double iteratorCount = 1;
 	static Logger log=Logger.getLogger(DriverBase.class);
-	@Test
-	public  void mainRunner()  {
+	//@Test
+	public  static void main(String[]args)  {
 		PropertyConfigurator.configure(System.getProperty("user.dir")+"/log4j.properties");
 		String path = System.getProperty("user.dir")+"/excelLib.xlsx";
 		log.info("excution sheet path ="+path);
@@ -47,7 +47,7 @@ public class DriverBase extends TestExecutor {
 		log.info("excution object repository path ="+repoPath);
 	
 		//extent path, it will allow only 3 or 4 column,
-		//o decide inbegining what u wants 
+		//o decide in beginning what u wants 
 		ExtentReports	ex=new ExtentReports(System.getProperty("user.dir")+"/test-output/my.html");
 		ExtentTest test = null;
 		// to execute scenario's
@@ -74,7 +74,6 @@ public class DriverBase extends TestExecutor {
 														break;
 										case "chrome":
 														test.log(LogStatus.INFO, "Starting test in Chrome");
-														//System.setProperty("webdriver.chrome.driver", "F:\\libs\\chromedriver.exe");
 														System.setProperty("webdriver.chrome.driver", "D:\\libs\\chromedriver.exe");
 														driver = new ChromeDriver();
 														break;
@@ -87,24 +86,23 @@ public class DriverBase extends TestExecutor {
 														break;
 										case "phantom js":
 														test.log(LogStatus.INFO, "Starting test in Phantom JS");
+														System.setProperty("webdriver.phantomjs.driver", "D:\\libs\\phantomjsdriver-1.2.1.jar.exe");
 														DesiredCapabilities cap = DesiredCapabilities.phantomjs();
 														cap.setJavascriptEnabled(true);
-														//System.setProperty("webdriver.chrome.driver", "F:\\eclipse new\\eclipse\\phantomjs.exe");
+														System.setProperty("webdriver.phantomjs.driver", "D:\\libs\\phantomjsdriver-1.2.1.jar.exe");
 														driver = new PhantomJSDriver();
 														break;
 										default:
-														test.log(LogStatus.INFO, "unsupported browser");
-														System.out.println("unsupported browser"+TestExecutor.ActionType(i, executorSheetName, path).toLowerCase());
+														test.log(LogStatus.INFO, "No browser was provided,Starting in chrome");
+														System.setProperty("webdriver.chrome.driver", "D:\\libs\\chromedriver.exe");
+														driver = new ChromeDriver();
 														break;
 									}
 								} catch (EncryptedDocumentException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								} catch (InvalidFormatException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								} catch (IOException e1) {
-									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
 															driver.manage().window().maximize();
@@ -115,7 +113,6 @@ public class DriverBase extends TestExecutor {
 															//to check how many number of time sheet should execute
 															try 
 																{
-																	
 																	iteratorCount = (double) ExcelUtils.reader(executorSheetName, i, 4, path);
 																	test.log(LogStatus.INFO, "Sheet will executed "+iteratorCount+" times");
 																} 
@@ -147,32 +144,26 @@ public class DriverBase extends TestExecutor {
 					else
 					{
 						TestExecutor.statusWriter(i, executorSheetName, "SKIPPED", path, 3);
-					//	test.log(LogStatus.SKIP,executorSheetName, "Skipped");
+						test.log(LogStatus.SKIP,executorSheetName, "Skipped");
 					}
 				} catch (EncryptedDocumentException e) {
 					try {
 						TestExecutor.statusWriter(i, executorSheetName, "SKIPPED", path, 3);
 					} catch (EncryptedDocumentException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} catch (InvalidFormatException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					e.printStackTrace();
 				} catch (InvalidFormatException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
