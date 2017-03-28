@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.JOptionPane;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.poi.EncryptedDocumentException;
@@ -19,7 +21,9 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class TestExecutor extends MultiGetelement {
 	static String parent = null;
+	static int elementLoadTimeLimit=60;
 	static Logger log=Logger.getLogger(TestExecutor.class);
+	
 	public static String actionPerformer(int i,
 										WebDriver wd, 
 										String sheetName, 
@@ -65,7 +69,7 @@ public class TestExecutor extends MultiGetelement {
 				}
 			WebElement ele = null;
 			try {
-				ele = MultiGetelement.GetElement(wd,
+				ele = MultiGetelement.GetElement(elementLoadTimeLimit,wd,
 												ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString(),
 												ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString(), 5);
 												reportName.log(LogStatus.INFO,"objectrepository row number= "+rowToRefer);
@@ -84,19 +88,7 @@ public class TestExecutor extends MultiGetelement {
 								ele.clear();
 								reportName.log(LogStatus.PASS,"Performing Clear action");
 								break;
-							case "verifyelement":
-								int size = GetElements(wd, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString()
-										, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString(), 10).size();
-									if (size > 0) 
-										{
-											log.info("element is present");
-											reportName.log(LogStatus.PASS,"element is present");
-										} 
-									else
-										{
-											log.info("element is not present");
-										}
-								break;
+							 
 							case "isdisplayed":
 												try 
 													{
@@ -304,9 +296,23 @@ public class TestExecutor extends MultiGetelement {
 														{	
 															long rowToRefer = counter(i, sheetName, 3, path)-1;
 															WebElement wwq=MultiGetelement.GetElement
-															(wd, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString()
+															(elementLoadTimeLimit,wd, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString()
 															, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString(), 5);
 															 wd.switchTo().frame(wwq);
+														} 
+													catch (Exception e)
+														{
+															status = "FAIL" + e.getMessage();
+															statusWriter(i, sheetName, status, path, 6);
+															String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+															reportName.log(LogStatus.FAIL,status);
+															reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+														}
+													break;
+					case "debug":
+													try 
+														{	
+														JOptionPane.showMessageDialog(null, "after clicking ok test will proceed");
 														} 
 													catch (Exception e)
 														{
@@ -361,11 +367,11 @@ public class TestExecutor extends MultiGetelement {
 														long SourceRowToRefer = counter(i, sheetName, 4, path)-1;
 														long dropRowToRefer = counter(i, sheetName, 5, path)-1;
 														WebElement drag = MultiGetelement.GetElement
-																(wd, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 2, repoPath).toString()
+																(elementLoadTimeLimit,wd, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 2, repoPath).toString()
 																, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 1, repoPath).toString(), 5);
 														
 														WebElement drop=MultiGetelement.GetElement
-																(wd, ExcelUtils.reader(repoSheetname, (int) dropRowToRefer, 2, repoPath).toString()
+																(elementLoadTimeLimit,wd, ExcelUtils.reader(repoSheetname, (int) dropRowToRefer, 2, repoPath).toString()
 																, ExcelUtils.reader(repoSheetname, (int) dropRowToRefer, 1, repoPath).toString(), 5);
 														Actions ac=new Actions(wd);
 														ac.dragAndDrop(drag, drop).build().perform();
@@ -386,7 +392,7 @@ public class TestExecutor extends MultiGetelement {
 																int xOffset = (int) (counter(i, sheetName, 4, path));
 																int yOffset = (int)counter(i, sheetName, 5, path);
 																WebElement drag = MultiGetelement.GetElement
-																		(wd, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 2, repoPath).toString()
+																		(elementLoadTimeLimit,wd, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 2, repoPath).toString()
 																		, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 1, repoPath).toString(), 5);
 																
 																Actions ac=new Actions(wd);
@@ -469,13 +475,20 @@ public class TestExecutor extends MultiGetelement {
 		return status;
 
 	}
+	
 	//executorSheetName,rowNum,executer sheet path,
-	public static String sheetExecutor( int i, String path, WebDriver wd, String scPath, 
-			String repoPath, String sheethameToBExecuted, long iteratorCount,ExtentTest	reportName) throws Exception {
+	public static String sheetExecutor( int i, 
+										String path, 
+										WebDriver wd, 
+										String scPath, 
+										String repoPath, 
+										String sheethameToBExecuted, 
+										long iteratorCount,
+										ExtentTest	reportName) throws Exception {
 		PropertyConfigurator.configure(System.getProperty("user.dir")+"/log4j.properties");
 		String status = null;
 		List<String> statuslist = new ArrayList<>();
-	//	System.out.println("sheet executor is  called");
+		//System.out.println("sheet executor is  called");
 		// get the sheet name which will be executed
 		log.info("executing sheet executor method");
 		String sheetWiseResult=null;
@@ -789,6 +802,7 @@ public class TestExecutor extends MultiGetelement {
 		return sheetWiseResult;
 	
 		}
+	
 	public static String actionPerformer2(	int i, 
 											WebDriver wd, 
 											String sheetName, 
@@ -828,7 +842,7 @@ public class TestExecutor extends MultiGetelement {
 						}
 					WebElement ele = null;
 					try {
-						ele = MultiGetelement.GetElement(wd,
+						ele = MultiGetelement.GetElement(elementLoadTimeLimit,wd,
 								ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString(),
 								ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString(), 5);
 						reportName.log(LogStatus.INFO,"objectrepository row number= "+rowToRefer);
@@ -846,20 +860,7 @@ public class TestExecutor extends MultiGetelement {
 								ele.clear();
 								reportName.log(LogStatus.PASS,"Performing Clear action");
 								break;
-							case "verifyelement":
-								int size = GetElements(wd, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString()
-										, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString(), 10).size();
-									
-								if (size > 0) 
-									{
-										log.info("element is present");
-										reportName.log(LogStatus.PASS,"element is present");
-									} 
-									else
-									{
-										log.info("element is not present");
-									}
-								break;
+							 
 							case "isdisplayed":
 												try 
 													{
@@ -939,6 +940,20 @@ public class TestExecutor extends MultiGetelement {
 										}
 										break;
 
+					case "debug":
+						try 
+							{	
+							JOptionPane.showMessageDialog(null, "after clicking ok test will proceed");
+							} 
+						catch (Exception e)
+							{
+								status = "FAIL" + e.getMessage();
+								statusWriter(i, sheetName, status, path, 6);
+								String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+								reportName.log(LogStatus.FAIL,status);
+								reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+							}
+						break;
 					case "gettitle":
 									try
 										{
@@ -986,73 +1001,73 @@ public class TestExecutor extends MultiGetelement {
 										
 					case "storethiswinhandle":
 												try 
-												{
-													Thread.sleep(1000);					
-													 parent=wd.getWindowHandle();
-													 System.out.println(parent);
-												} 
+													{
+														Thread.sleep(1000);					
+														 parent=wd.getWindowHandle();
+														 System.out.println(parent);
+													} 
 												catch (Exception e) 
-												{
-													status = "FAIL " + e.getMessage();
-													statusWriter(i, sheetName, status, path, 6);
-													String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
-													reportName.log(LogStatus.FAIL,status);
-													reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
-												}
+													{
+														status = "FAIL " + e.getMessage();
+														statusWriter(i, sheetName, status, path, 6);
+														String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+														reportName.log(LogStatus.FAIL,status);
+														reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+													}
 												break;
 												
 					case "switchtoparentwindow":
 												try 
-												{	
-													System.out.println("attempting to switch to parent");
-													System.out.println(parent);
-													 wd.switchTo().window(parent);
-												} 
+													{	
+														System.out.println("attempting to switch to parent");
+														System.out.println(parent);
+														 wd.switchTo().window(parent);
+													} 
 												catch (Exception e) 
-												{
-													status = "FAIL " + e.getMessage();
-													statusWriter(i, sheetName, status, path, 6);
-													String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
-													reportName.log(LogStatus.FAIL,status);
-													reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
-												}
+													{
+														status = "FAIL " + e.getMessage();
+														statusWriter(i, sheetName, status, path, 6);
+														String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+														reportName.log(LogStatus.FAIL,status);
+														reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+													}
 												break;
 						
 						// switch to boot strap modal dialog
 					case "switchtoactiveelement":
 													try 
-													{	
-														 wd.switchTo().activeElement();
-													} 
+														{	
+															 wd.switchTo().activeElement();
+														} 
 													catch (Exception e)
-													{
-														status = "FAIL" + e.getMessage();
-														statusWriter(i, sheetName, status, path, 6);
-														String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
-														reportName.log(LogStatus.FAIL,status);
-														reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
-													}
+														{
+															status = "FAIL" + e.getMessage();
+															statusWriter(i, sheetName, status, path, 6);
+															String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+															reportName.log(LogStatus.FAIL,status);
+															reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+														}
 													break;
 					case "switchtodefaultcontent":
 													try 
-													{	
-														 wd.switchTo().defaultContent();
-													} 
+														{	
+															 wd.switchTo().defaultContent();
+														} 
 													catch (Exception e) 
-													{
-														status = "FAIL" + e.getMessage();
-														statusWriter(i, sheetName, status, path, 6);
-														String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
-														reportName.log(LogStatus.FAIL,status);
-														reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
-													}
+														{
+															status = "FAIL" + e.getMessage();
+															statusWriter(i, sheetName, status, path, 6);
+															String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+															reportName.log(LogStatus.FAIL,status);
+															reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+														}
 													break;
 					case "switchtoframe":
 										try 
 										{	
 											long rowToRefer = counter(i, sheetName, 3, path)-1;
 											WebElement wwq=MultiGetelement.GetElement
-											(wd, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString()
+											(elementLoadTimeLimit,wd, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString()
 											, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString(), 5);
 											 wd.switchTo().frame(wwq);
 										} 
@@ -1109,11 +1124,11 @@ public class TestExecutor extends MultiGetelement {
 														long SourceRowToRefer = counter(i, sheetName, 4, path)-1;
 														long dropRowToRefer = counter(i, sheetName, 5, path)-1;
 														WebElement drag = MultiGetelement.GetElement
-																(wd, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 2, repoPath).toString()
+																(elementLoadTimeLimit,wd, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 2, repoPath).toString()
 																, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 1, repoPath).toString(), 5);
 														
 														WebElement drop=MultiGetelement.GetElement
-																(wd, ExcelUtils.reader(repoSheetname, (int) dropRowToRefer, 2, repoPath).toString()
+																(elementLoadTimeLimit,wd, ExcelUtils.reader(repoSheetname, (int) dropRowToRefer, 2, repoPath).toString()
 																, ExcelUtils.reader(repoSheetname, (int) dropRowToRefer, 1, repoPath).toString(), 5);
 														Actions ac=new Actions(wd);
 														ac.dragAndDrop(drag, drop).build().perform();
@@ -1134,7 +1149,7 @@ public class TestExecutor extends MultiGetelement {
 																int xOffset = (int) (counter(i, sheetName, 4, path));
 																int yOffset = (int)counter(i, sheetName, 5, path);
 																WebElement drag = MultiGetelement.GetElement
-																		(wd, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 2, repoPath).toString()
+																		(elementLoadTimeLimit,wd, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 2, repoPath).toString()
 																		, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 1, repoPath).toString(), 5);
 																
 																Actions ac=new Actions(wd);
@@ -1204,9 +1219,9 @@ public class TestExecutor extends MultiGetelement {
 										System.out.println(status+" executesheet");
 										
 										if (status=="FAIL") 
-										{
-											statusWriter(i, sheetName, status, path, 7);
-										}
+											{
+												statusWriter(i, sheetName, status, path, 7);
+											}
 										//else statusWriter(i, sheetName, "PASS", path, 6);
 										break;
 					default:

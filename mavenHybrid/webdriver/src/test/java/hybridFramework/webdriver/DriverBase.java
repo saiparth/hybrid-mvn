@@ -26,18 +26,22 @@ public class DriverBase extends TestExecutor {
 	
 	File file=new File(propertiesFilepath);
 	
-	/*@BeforeTest
-	public void fileExistChecker() throws Exception{
-		if (!file.exists()) {
-			System.out.println(file);
-			throw new Exception("Base file not found");
+	@BeforeTest
+	public void fileExistChecker() throws Exception
+		{
+			if (!file.exists()) 
+				{
+					System.out.println(file);
+					throw new Exception("Base file not found");
+				}
 		}
-	}
-	*/
+		
 	static double iteratorCount = 1;
 	static Logger log=Logger.getLogger(DriverBase.class);
-	//@Test
-	public  static void main(String[]args)  {
+	
+	@Test
+	public  static void mainRunner()  
+	{
 		PropertyConfigurator.configure(System.getProperty("user.dir")+"/log4j.properties");
 		String path = System.getProperty("user.dir")+"/excelLib.xlsx";
 		log.info("excution sheet path ="+path);
@@ -61,10 +65,11 @@ public class DriverBase extends TestExecutor {
 				try {
 					if (TestExecutor.SpecialActionType(i, executorSheetName, path).equalsIgnoreCase("YES")) 
 					{
-						String status = "PASS";
+						String status = "PASS";  
 						test.log(LogStatus.INFO, "Checking browser details");
 						// check which browser to be used
-								try {
+							
+						try {
 									switch (TestExecutor.ActionType(i, executorSheetName, path).toLowerCase())
 									{
 										case "firefox":
@@ -86,10 +91,9 @@ public class DriverBase extends TestExecutor {
 														break;
 										case "phantom js":
 														test.log(LogStatus.INFO, "Starting test in Phantom JS");
-														System.setProperty("webdriver.phantomjs.driver", "D:\\libs\\phantomjsdriver-1.2.1.jar.exe");
+														//System.setProperty("webdriver.phantomjs.driver", "D:\\libs\\phantomjs.exe");
 														DesiredCapabilities cap = DesiredCapabilities.phantomjs();
 														cap.setJavascriptEnabled(true);
-														System.setProperty("webdriver.phantomjs.driver", "D:\\libs\\phantomjsdriver-1.2.1.jar.exe");
 														driver = new PhantomJSDriver();
 														break;
 										default:
@@ -98,13 +102,19 @@ public class DriverBase extends TestExecutor {
 														driver = new ChromeDriver();
 														break;
 									}
-								} catch (EncryptedDocumentException e1) {
+							} 
+						catch (EncryptedDocumentException e1)
+							{
 									e1.printStackTrace();
-								} catch (InvalidFormatException e1) {
+							} 
+						catch (InvalidFormatException e1) 
+							{
 									e1.printStackTrace();
-								} catch (IOException e1) {
+							} 
+						catch (IOException e1)
+							{
 									e1.printStackTrace();
-								}
+							}
 															driver.manage().window().maximize();
 															driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
 															driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
@@ -131,7 +141,7 @@ public class DriverBase extends TestExecutor {
 																		test.log(LogStatus.INFO,"Browser closed succesfully");
 																		if (status.toString().contains("FAIL"))
 																				{
-																					TestExecutor.statusWriter(i, executorSheetName, "FAIL", path, 3);
+																					TestExecutor.statusWriter(i, executorSheetName, status.toString(), path, 3);
 																					reportName.log(LogStatus.FAIL,sheethameToBExecuted , "Failed");
 																				}
 																		else 
@@ -142,31 +152,44 @@ public class DriverBase extends TestExecutor {
 							ex.endTest(reportName);
 					}
 					else
+						{
+							TestExecutor.statusWriter(i, executorSheetName, "SKIPPED", path, 3);
+							test.log(LogStatus.SKIP,executorSheetName, "Skipped");
+						}
+				} 
+				catch (EncryptedDocumentException e) 
+				{
+					try 
+						{
+							TestExecutor.statusWriter(i, executorSheetName, "SKIPPED", path, 3);
+						} 
+					catch (EncryptedDocumentException e1)
+						{
+							e1.printStackTrace();
+						} 
+					catch (InvalidFormatException e1) 
+						{
+							e1.printStackTrace();
+						}
+				} 
+				catch (InvalidFormatException e) 
 					{
-						TestExecutor.statusWriter(i, executorSheetName, "SKIPPED", path, 3);
-						test.log(LogStatus.SKIP,executorSheetName, "Skipped");
+						e.printStackTrace();
+					} 
+				catch (IOException e) 
+					{
+						e.printStackTrace();
+					} 
+				catch (Exception e) 
+					{
+						e.printStackTrace();
 					}
-				} catch (EncryptedDocumentException e) {
-					try {
-						TestExecutor.statusWriter(i, executorSheetName, "SKIPPED", path, 3);
-					} catch (EncryptedDocumentException e1) {
-						e1.printStackTrace();
-					} catch (InvalidFormatException e1) {
-						e1.printStackTrace();
-					}
-					e.printStackTrace();
-				} catch (InvalidFormatException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 			}
-		} catch (IOException e) {
+		} 
+		catch (IOException e) 
+		{
 			e.printStackTrace();
 		}
-		
 		ex.endTest(test);
 		ex.flush();
 		

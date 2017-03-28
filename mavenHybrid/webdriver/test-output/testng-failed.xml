@@ -3,12 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="hybridFramework.webdriver.AppTest">
+      <class name="hybridFramework.webdriver.DriverBase">
         <methods>
-          <include name="setupClass"/>
-          <include name="setupTest"/>
+          <include name="fileExistChecker"/>
+          <include name="mainRunner"/>
         </methods>
-      </class> <!-- hybridFramework.webdriver.AppTest -->
+      </class> <!-- hybridFramework.webdriver.DriverBase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
