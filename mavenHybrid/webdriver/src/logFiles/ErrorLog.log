@@ -1116,3 +1116,8 @@
 2017-04-92 12:04:135 ERROR TestExecutor:140 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
 2017-04-92 12:04:862 ERROR TestExecutor:140 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
 2017-04-92 12:04:495 ERROR TestExecutor:140 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-04-92 12:04:580 ERROR DriverBase:131 - no iteratorCount given,Sheet will be executed 1 time
+2017-04-92 12:04:140 ERROR TestExecutor:140 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-04-92 12:04:869 ERROR TestExecutor:140 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-04-92 12:04:550 ERROR TestExecutor:140 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
+2017-04-92 12:04:111 ERROR TestExecutor:140 - checkIfCondition in method sheetExecutorjava.lang.NullPointerException
