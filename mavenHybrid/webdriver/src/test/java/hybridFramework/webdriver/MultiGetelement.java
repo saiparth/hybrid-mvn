@@ -126,17 +126,36 @@ public class MultiGetelement  {
 			reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath),status);
 		}
 	WebElement ele = null;
+	
 	try {
 		ele = MultiGetelement.GetElement(elementLoadTimeLimit,wd,
 										ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString(),
 										ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString(), 5);
 										reportName.log(LogStatus.INFO,"objectrepository row number= "+rowToRefer);
 		
-		switch (TestExecutor.performType(i, sheetName, path).toLowerCase()) 
+			String	sendkeysvalue=Helpingfunctions.timeForName();
+					try {
+							sendkeysvalue=TestExecutor.value(i, sheetName, path).toLowerCase();
+						} 
+					catch (Exception e) 
+						{
+							//status = "FAIL " + e.getMessage();	
+							reportName.log(LogStatus.WARNING,status+" sendkeys cell is blank,we sent current time value for this");
+							if (TestExecutor.performType(i, sheetName, path).toLowerCase().contains("sendkeys"))
+							{
+							TestExecutor.statusWriter(i, sheetName, "WARNING : sendkeys cell is blank,we sent current time value for this", path, 6);
+							}
+						}
+									
+			switch (TestExecutor.performType(i, sheetName, path).toLowerCase()) 
 					{
 					case "sendkeys":
-						ele.sendKeys(TestExecutor.value(i, sheetName, path));
-						reportName.log(LogStatus.PASS,"Performing Sendkeys action with "+TestExecutor.value(i, sheetName, path));
+						ele.sendKeys(sendkeysvalue);
+						reportName.log(LogStatus.PASS,"Performing Sendkeys action with "+sendkeysvalue);
+						break;
+					case "sendkeysappendname":
+						ele.sendKeys(sendkeysvalue);
+						reportName.log(LogStatus.PASS,"Performing Sendkeys appendname action with "+sendkeysvalue);
 						break;
 					case "click":
 						ele.click();
@@ -191,7 +210,7 @@ public class MultiGetelement  {
 									String scPath, 
 									int elementLoadTimeLimit, 
 									String repoSheetname, 
-									String repoPath) throws EncryptedDocumentException, InvalidFormatException, IOException {
+									String repoPath) throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
 	String status="PASS";
 	if (input.contains("find element")) 
 	{
@@ -416,6 +435,7 @@ public class MultiGetelement  {
 													}
 													break;
 					case "asserttitle":
+													Thread.sleep(250);
 													String actual_title=wd.getTitle().toLowerCase();
 													String breaker="0";
 															if (TestExecutor.performType(i, sheetName, path).toLowerCase().contains(actual_title)) 

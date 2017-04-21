@@ -54,17 +54,9 @@ public class TestExecutor extends MultiGetelement {
 
 		  if (input.contains("executesheet"))
 				{
-					System.out.println("execute sheet is called in switch");
+					//System.out.println("execute sheet is called in switch");
 					String newsheetname = "";
 					long NumOfIteration = 1;
-					try 
-						{
-							NumOfIteration = counter(i, sheetName, 3, path);
-						}
-					catch (Exception e) 
-						{
-							log.info("executeSheetwithinsheet - no count mentioned");
-						}
 					
 						try
 							{
@@ -75,6 +67,15 @@ public class TestExecutor extends MultiGetelement {
 							{
 								status = "FAIL -" + e.getMessage();
 								statusWriter(i, sheetName, status, path, 6);
+							}
+						try 
+							{
+								NumOfIteration = counter(i, newsheetname, 3, path);
+								System.out.println(NumOfIteration);
+							}
+						catch (Exception e) 
+							{
+								log.info("executeSheetwithinsheet - no count mentioned");
 							}
 									status=	SheeteExecutorCommon(i, path, wd, scPath, repoPath, newsheetname, NumOfIteration, reportName);
 									System.out.println(status+" executesheet");
@@ -102,18 +103,19 @@ public class TestExecutor extends MultiGetelement {
 										long iteratorCount,
 										ExtentTest	reportName) throws Exception
 		{
+		
 		return SheeteExecutorCommon(i, path, wd, scPath, repoPath, sheethameToBExecuted, iteratorCount, reportName);
 	
 		}
 	 public static String SheeteExecutorCommon(int i, 
-				String path, 
-				WebDriver wd, 
-				String scPath, 
-				String repoPath, 
-				String sheethameToBExecuted, 
-				long iteratorCount,
-				ExtentTest	reportName) throws IOException, Exception {
-		 PropertyConfigurator.configure(System.getProperty("user.dir")+"/log4j.properties");
+												String path, 
+												WebDriver wd, 
+												String scPath, 
+												String repoPath, 
+												String sheethameToBExecuted, 
+												long iteratorCount,
+												ExtentTest	reportName) throws IOException, Exception {
+		 	PropertyConfigurator.configure(System.getProperty("user.dir")+"/log4j.properties");
 			String status = null;
 			List<String> statuslist = new ArrayList<>();
 			//System.out.println("sheet executor is  called");
@@ -163,7 +165,6 @@ public class TestExecutor extends MultiGetelement {
 											if(actionPerformer(j, wd, sheethameToBExecuted, path, scPath, repoPath,1,reportName).toLowerCase().contains("pass"))
 												reportName.log(LogStatus.INFO,"Inside IF block,action is pass");
 											{
-												//added = 4/1/2017
 												for (int k = j+1; k <=ExcelUtils.getRowCount(sheethameToBExecuted, path); k++)
 													{
 													//System.out.println("value k="+k);
@@ -171,7 +172,7 @@ public class TestExecutor extends MultiGetelement {
 														try 
 															{
 																 val = ExcelUtils.reader(sheethameToBExecuted, k, 1, path).toString();
-																	System.out.println("breaker2 " +k+"" +ExcelUtils.reader(sheethameToBExecuted, k, 1, path).toString());
+																	//System.out.println("breaker2 " +k+"" +ExcelUtils.reader(sheethameToBExecuted, k, 1, path).toString());
 															} 	
 														catch (Exception e) 
 															{
@@ -182,18 +183,22 @@ public class TestExecutor extends MultiGetelement {
 														if(val==null||val.contains("Blank value in"))
 														{
 															breaker2=true;
+															break;
 														}
-																if(breaker2==true)
+																if(!breaker2==true)
 																	{
-																		break;
-																	}
-																		else
-																			{
-																				status = actionPerformer(k, wd, sheethameToBExecuted, path,
-																						scPath, repoPath,1,	reportName);
+																				status = actionPerformer(k, 
+																										wd, 
+																										sheethameToBExecuted, 
+																										path,
+																										scPath, 
+																										repoPath,
+																										1,	
+																										reportName);
 																				reportName.log(LogStatus.INFO,"Inside IF block actions results - "+status);
 																				statuslist.add(status);
-																				if (status=="0"){// to terminate if assert fails
+																				if (status=="0")
+																				{// to terminate if assert fails
 																					break;
 																				}
 																			}
@@ -206,14 +211,14 @@ public class TestExecutor extends MultiGetelement {
 							{
 								boolean actionBreaker=false;
 								try 
-								{
-									 actionBreaker=ExcelUtils.reader(sheethameToBExecuted, j, 2, path).toString().toLowerCase().contains("blank value in");
-									//System.out.println(breaker2);
-								} 
-							catch (Exception e) 
-								{
-									log.error("emty cells in method sheetExecutor "+e);
-								}
+									{
+										 actionBreaker=ExcelUtils.reader(sheethameToBExecuted, j, 2, path).toString().toLowerCase().contains("blank value in");
+										//System.out.println(breaker2);
+									} 
+								catch (Exception e) 
+									{
+										log.error("emty cells in method sheetExecutor "+e);
+									}
 										if (actionBreaker==true)
 											{
 												reportName.log(LogStatus.INFO,"Blank value found in action type ,skipping this row");
@@ -225,14 +230,14 @@ public class TestExecutor extends MultiGetelement {
 												statuslist.add(status);
 												if(status=="0")//if assert title fail break execution
 																{
-																	System.out.println("Assert title failed");
+																	//System.out.println("Assert title failed");
 																	break;
 																}
 												
 											}
 							}
 					}
-				System.out.println(status.toString());
+				//System.out.println(status.toString());
 			}
 			 		if (statuslist.toString().contains("0")||statuslist.toString().contains("FAIL"))
 				 		{

@@ -31,7 +31,13 @@ public class Helpingfunctions {
 			FileUtils.copyFile(file, d);
 			return destinationPath+"\\"+Todate+"\\"+today;
 		}
-		
+		public static String timeForName() 
+		{
+			DateFormat df = new SimpleDateFormat("MMMddhhmmss");
+			Calendar cal = Calendar.getInstance();
+			String date = df.format(cal.getTime());
+			return date;
+		}
 		public static String today() 
 		{
 			DateFormat df = new SimpleDateFormat("yyyyMMdd_HH_mm_ss");

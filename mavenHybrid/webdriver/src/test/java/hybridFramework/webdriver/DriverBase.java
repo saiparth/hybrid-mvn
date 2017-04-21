@@ -34,7 +34,25 @@ public class DriverBase extends TestExecutor {
 					System.out.println(file);
 					throw new Exception("Base file not found");
 				}
-		}
+			//Flush old status
+			String path = System.getProperty("user.dir")+"/excelLib.xlsx";
+			String executorSheetName = "suite";
+			for (int i = 1; i <= ExcelUtils.getRowCount(executorSheetName, path); i++) 
+				
+			{
+				TestExecutor.statusWriter(i, executorSheetName, "",path, 3);
+				System.out.println("flushing");
+				if (TestExecutor.SpecialActionType(i, executorSheetName, path).equalsIgnoreCase("YES")) 
+					{
+					String sheethameToBExecuted = TestExecutor.SpecialFunctions(i, executorSheetName, path);
+					for (int j = 1; j <= ExcelUtils.getRowCount(sheethameToBExecuted, path); j++) 
+								{
+									TestExecutor.statusWriter(i, sheethameToBExecuted, "",path, 6);
+									System.out.println("flushing");
+								}
+					}
+				}
+			}
 		
 	static double iteratorCount = 1;
 	static Logger log=Logger.getLogger(DriverBase.class);

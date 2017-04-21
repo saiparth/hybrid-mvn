@@ -9,6 +9,8 @@ import java.util.Properties;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -104,12 +106,12 @@ public class ExcelUtils {
 	public static void writer(String sheetName, int rowNum, int colNum, String status, String path)  {
 		FileInputStream fis = null;
 		FileOutputStream fos = null;
+		
 		try {
 			fis = new FileInputStream(path);
 			Workbook wb = WorkbookFactory.create(fis);
 			Sheet sh = wb.getSheet(sheetName);
 			if (sh != null) {
-
 				Row row = sh.getRow(rowNum);
 				if (row != null) {
 					Cell cel = row.createCell(colNum);
