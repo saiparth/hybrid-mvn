@@ -15,7 +15,9 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
+import org.apache.log4j.Category;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.Alert;
@@ -36,6 +38,7 @@ import org.openqa.selenium.support.ui.Wait;
 public class MultiGetelement  {
 	static String parent = null;
 	public static WebElement GetElement( int timelimit, WebDriver wd, String value, String type, long poll) throws InterruptedException {
+		PropertyConfigurator.configure(System.getProperty("user.dir")+"/log4j.properties");
 		List<WebElement> ele = null;
 		boolean status=false;
 		for (int i = 0; i <= timelimit; i++)
@@ -108,15 +111,16 @@ public class MultiGetelement  {
 										String scPath, 
 										int elementLoadTimeLimit, 
 										String repoSheetname, 
-										String repoPath										
+										String repoPath, Logger log										
 										) throws EncryptedDocumentException, InvalidFormatException, IOException {
-	long rowToRefer = 0;
+		PropertyConfigurator.configure(System.getProperty("user.dir")+"/log4j.properties");
+		long rowToRefer = 0;
 	String status = null;
 	try 
 		{
 		//TestExecutor ts=new TestExecutor();
 			rowToRefer = TestExecutor.counter( i, sheetName, 3, path) - 1;
-			reportName.log(LogStatus.INFO,"Given row to refer in object repository - "+rowToRefer);
+			 log.info("Given row to refer in object repository - "+rowToRefer);
 		} 
 	catch (Exception e) 
 		{
@@ -131,7 +135,7 @@ public class MultiGetelement  {
 		ele = MultiGetelement.GetElement(elementLoadTimeLimit,wd,
 										ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString(),
 										ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString(), 5);
-										reportName.log(LogStatus.INFO,"objectrepository row number= "+rowToRefer);
+										log.info("objectrepository row number= "+rowToRefer);
 		
 			String	sendkeysvalue=Helpingfunctions.timeForName();
 					try {
@@ -210,11 +214,12 @@ public class MultiGetelement  {
 									String scPath, 
 									int elementLoadTimeLimit, 
 									String repoSheetname, 
-									String repoPath) throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
-	String status="PASS";
+									String repoPath,Logger log) throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
+		PropertyConfigurator.configure(System.getProperty("user.dir")+"/log4j.properties");
+		String status="PASS";
 	if (input.contains("find element")) 
 	{
-		ElementActions(i, sheetName, path, reportName, wd, scPath,elementLoadTimeLimit , repoSheetname, repoPath);
+		ElementActions(i, sheetName, path, reportName, wd, scPath,elementLoadTimeLimit , repoSheetname, repoPath, log);
 	}
 	else
 	switch (input) 
@@ -224,7 +229,8 @@ public class MultiGetelement  {
 									{
 										wd.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
 										wd.get(TestExecutor.locator(i, sheetName, 3, path));
-										System.out.println(wd.getCurrentUrl());
+										reportName.log(LogStatus.PASS,"Performing Get URL"+wd.getCurrentUrl());
+										//System.out.println(wd.getCurrentUrl());
 									} 
 									catch (Exception e)
 									{
@@ -452,6 +458,39 @@ public class MultiGetelement  {
 																	return breaker;
 																}//breaker will send value 0,that will break loop
 													break;
+					case "assertelement":
+						
+						long rowToRefer = 0;
+												try 
+														{
+															rowToRefer = TestExecutor.counter( i, sheetName, 3, path) - 1;
+															log.info("Given row to refer in object repository - "+rowToRefer);
+														} 
+												catch (Exception e) 
+												{
+															status = "FAIL " + e.getMessage();
+															TestExecutor.statusWriter(i, sheetName, status, path, 6);
+															reportName.log(LogStatus.FAIL,"row to refer is blank");
+												}
+									String breaker2="0";
+									
+									try 
+												{
+													MultiGetelement.GetElement(elementLoadTimeLimit,wd,
+														ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString(),
+														ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString(), 5).isDisplayed();
+													reportName.log(LogStatus.PASS,"Performing Element Assertion");
+												} 
+									catch (Exception e) 
+									{
+										status = "FAIL "+e;
+										TestExecutor.statusWriter(i, sheetName, status, path, 6);
+										String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+										reportName.log(LogStatus.FAIL,status+"Assert element failed");
+										reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+										return breaker2;
+									}//breaker will send value 0,that will break loop
+						break;
 					case "drag drop by element":
 												try 
 													{

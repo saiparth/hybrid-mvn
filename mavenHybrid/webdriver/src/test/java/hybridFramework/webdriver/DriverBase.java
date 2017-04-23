@@ -48,7 +48,7 @@ public class DriverBase extends TestExecutor {
 					for (int j = 1; j <= ExcelUtils.getRowCount(sheethameToBExecuted, path); j++) 
 								{
 									TestExecutor.statusWriter(i, sheethameToBExecuted, "",path, 6);
-									System.out.println("flushing");
+									//System.out.println("flushing");
 								}
 					}
 				}
@@ -70,17 +70,18 @@ public class DriverBase extends TestExecutor {
 	
 		//extent path, it will allow only 3 or 4 column,
 		//o decide in beginning what u wants 
-		ExtentReports	ex=new ExtentReports(System.getProperty("user.dir")+"/test-output/my.html");
+		ExtentReports	ex=new ExtentReports(System.getProperty("user.dir")+"/test-output/executionReport.html");
 		ExtentTest test = null;
 		// to execute scenario's
 		String executorSheetName = "suite";
-		  test =  ex.startTest("Browser intialization details");
+		test =  ex.startTest("Browser intialization details");
 		// loop through sheet suite
 		try {
 			for (int i = 1; i <= ExcelUtils.getRowCount(executorSheetName, path); i++) {
 				// check which sheet should be executed
 				WebDriver driver = null ;
 				try {
+					//run status
 					if (TestExecutor.SpecialActionType(i, executorSheetName, path).equalsIgnoreCase("YES")) 
 					{
 						String status = "PASS";  
@@ -124,35 +125,46 @@ public class DriverBase extends TestExecutor {
 						catch (EncryptedDocumentException e1)
 							{
 									e1.printStackTrace();
+									status="FAIL"+e1;
 							} 
 						catch (InvalidFormatException e1) 
 							{
 									e1.printStackTrace();
+									status="FAIL"+e1;
 							} 
 						catch (IOException e1)
 							{
 									e1.printStackTrace();
+									status="FAIL"+e1;
 							}
 															driver.manage().window().maximize();
 															driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
 															driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+															//get which sheet should be executed
 															String sheethameToBExecuted = TestExecutor.SpecialFunctions(i, executorSheetName, path);
 															test.log(LogStatus.INFO, "Starting test using sheet - "+sheethameToBExecuted);
 															//to check how many number of time sheet should execute
 															try 
 																{
 																	iteratorCount = (double) ExcelUtils.reader(executorSheetName, i, 4, path);
-																	test.log(LogStatus.INFO, "Sheet will executed "+iteratorCount+" times");
 																} 
 															catch (Exception e) 
 																{
-																	log.error("no iteratorCount given,Sheet will be executed 1 time");
+																	log.info("no iteratorCount given,Sheet will be executed 1 time");
 																	test.log(LogStatus.INFO,"No count present,Sheet will be executed 1 time");
 																}
 																		long iteratorCountLong = (long) iteratorCount;
-																		ExtentTest	reportName =  ex.startTest(TestExecutor.ActionType(i, executorSheetName, path)+" "+sheethameToBExecuted);
-																		status = sheetExecutor(i, path, driver, scPath, repoPath, sheethameToBExecuted,
-																						iteratorCountLong,reportName);
+																		ExtentTest	reportName =  ex.startTest(TestExecutor.ActionType(i, 
+																								  executorSheetName, path)+" "+sheethameToBExecuted);
+																		
+																		status = frmDriverLoopCreater( i, 
+																								path, 
+																								driver, 
+																								scPath, 
+																								repoPath, 
+																								sheethameToBExecuted,
+																								iteratorCountLong,
+																								reportName);
 																		System.out.println(status);
 																		driver.quit();	
 											
@@ -172,7 +184,7 @@ public class DriverBase extends TestExecutor {
 					else
 						{
 							TestExecutor.statusWriter(i, executorSheetName, "SKIPPED", path, 3);
-							test.log(LogStatus.SKIP,executorSheetName, "Skipped");
+							test.log(LogStatus.SKIP,executorSheetName+" Skipped");
 						}
 				} 
 				catch (EncryptedDocumentException e) 
