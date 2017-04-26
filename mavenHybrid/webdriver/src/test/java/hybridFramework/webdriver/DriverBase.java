@@ -8,11 +8,13 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -22,8 +24,7 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class DriverBase extends TestExecutor {
-	static String propertiesFilepath= System.getProperty("user.dir")+"/config.properties";
-	
+	 static String propertiesFilepath= System.getProperty("user.dir")+"/config.properties";
 	File file=new File(propertiesFilepath);
 	
 	@BeforeTest
@@ -56,7 +57,7 @@ public class DriverBase extends TestExecutor {
 		
 	static double iteratorCount = 1;
 	static Logger log=Logger.getLogger(DriverBase.class);
-	
+	 public static String bundlepath=ExcelUtils.propertyReader(DriverBase.propertiesFilepath, "BundlePath");
 	@Test
 	public  static void mainRunner()  
 	{
@@ -65,6 +66,7 @@ public class DriverBase extends TestExecutor {
 		log.info("excution sheet path ="+path);
 		String scPath = ExcelUtils.propertyReader(propertiesFilepath, "scPath");
 		log.info("excution sc reen shot path ="+scPath);
+		
 		String repoPath = System.getProperty("user.dir")+"/objectrepository.xlsx";
 		log.info("excution object repository path ="+repoPath);
 	
@@ -79,6 +81,8 @@ public class DriverBase extends TestExecutor {
 		try {
 			for (int i = 1; i <= ExcelUtils.getRowCount(executorSheetName, path); i++) {
 				// check which sheet should be executed
+				DesiredCapabilities dc=new DesiredCapabilities();
+				
 				WebDriver driver = null ;
 				try {
 					//run status
@@ -93,20 +97,23 @@ public class DriverBase extends TestExecutor {
 									{
 										case "firefox":
 														test.log(LogStatus.INFO, "Starting test in Firefox");
+														dc.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,UnexpectedAlertBehaviour.ACCEPT);
 														System.setProperty("webdriver.gecko.driver", "D:\\libs\\geckodriver.exe");
 														driver = new FirefoxDriver();
 														break;
 										case "chrome":
 														test.log(LogStatus.INFO, "Starting test in Chrome");
 														System.setProperty("webdriver.chrome.driver", "D:\\libs\\chromedriver.exe");
-														driver = new ChromeDriver();
+														DesiredCapabilities dis=new DesiredCapabilities();
+														dis.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
+														driver=new ChromeDriver(dis);
 														break;
 										case "internet explorer":
 														System.setProperty("webdriver.ie.driver", "D:\\libs\\IEDriverServer.exe");
 														test.log(LogStatus.INFO, "Starting test in IE");
-														DesiredCapabilities dis=DesiredCapabilities.internetExplorer();
-														dis.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-														driver = new InternetExplorerDriver(dis);
+														DesiredCapabilities a=DesiredCapabilities.internetExplorer();
+														a.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+														driver = new InternetExplorerDriver(a);
 														break;
 										case "phantom js":
 														test.log(LogStatus.INFO, "Starting test in Phantom JS");

@@ -9,12 +9,17 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JOptionPane;
-
 import com.google.common.base.Function;
+import com.mongodb.connection.SslSettings;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-
+import org.sikuli.api.robot.Keyboard;
+import org.sikuli.api.robot.desktop.DesktopKeyboard;
+import org.sikuli.basics.Settings;
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Pattern;
+import org.sikuli.script.Screen;
 import org.apache.log4j.Category;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -29,7 +34,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-
 
 /**
  * @author partha
@@ -240,6 +244,145 @@ public class MultiGetelement  {
 										reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
 									}
 									break;
+					case "stdclick":
+									String imgpath = null;
+									long sikuli_rowToRefer=0;
+									try 
+										{
+											sikuli_rowToRefer = TestExecutor.counter( i, sheetName, 3, path) - 1;
+											 imgpath=ExcelUtils.reader(repoSheetname, (int) sikuli_rowToRefer, 2, repoPath).toString();
+											 log.info("row to refer - "+sikuli_rowToRefer+"imagpath="+imgpath);
+										} 
+									catch (Exception e) 
+										{
+											status = "FAIL " + e.getMessage();
+											TestExecutor.statusWriter(i, sheetName, status, path, 6);
+											reportName.log(LogStatus.FAIL,"Problem in finding sikuli image path");
+										}
+									
+									try 
+										{
+											 Screen sc=new Screen();
+											 Settings.BundlePath=DriverBase.bundlepath;
+											 Pattern pat=new Pattern(imgpath);
+											 sc.wait(pat);
+											 sc.click(pat);
+											 reportName.log(LogStatus.PASS,"Performing std click");
+											//System.out.println(wd.getCurrentUrl());
+										} 
+									catch (Exception e)
+										{
+											status = "FAIL " + e.getMessage();
+											String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+											reportName.log(LogStatus.FAIL,status);
+											reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+										}
+									break;
+									
+					case "stddoubleclick":
+								String imgpath1 = null;
+								long sikuli_rowToRefer1=0;
+								try 
+									{
+										sikuli_rowToRefer1 = TestExecutor.counter( i, sheetName, 3, path) - 1;
+										 imgpath1=ExcelUtils.reader(repoSheetname, (int) sikuli_rowToRefer1, 2, repoPath).toString();
+										 log.info("row to refer - "+sikuli_rowToRefer1+"imagpath="+imgpath1);
+									} 
+								catch (Exception e) 
+									{
+										status = "FAIL " + e.getMessage();
+										TestExecutor.statusWriter(i, sheetName, status, path, 6);
+										reportName.log(LogStatus.FAIL,"Problem in finding sikuli image path");
+									}
+								
+								try 
+									{
+										 Screen sc=new Screen();
+										 Settings.BundlePath=DriverBase.bundlepath;
+										 Pattern pat=new Pattern(imgpath1);
+										 sc.wait(pat);
+										 sc. doubleClick(pat);
+										 reportName.log(LogStatus.PASS,"Performing double click");
+										//System.out.println(wd.getCurrentUrl());
+									} 
+								catch (Exception e)
+									{
+										status = "FAIL " + e.getMessage();
+										String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+										reportName.log(LogStatus.FAIL,status);
+										reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+									}
+								break;
+					case "stdrightclick":
+						String imgpath4 = null;
+						long sikuli_rowToRefer4=0;
+						try 
+							{
+								sikuli_rowToRefer4 = TestExecutor.counter( i, sheetName, 3, path) - 1;
+								 imgpath4=ExcelUtils.reader(repoSheetname, (int) sikuli_rowToRefer4, 2, repoPath).toString();
+								 log.info("row to refer - "+sikuli_rowToRefer4+" imagpath="+imgpath4);
+							} 
+						catch (Exception e) 
+							{
+								status = "FAIL " + e.getMessage();
+								TestExecutor.statusWriter(i, sheetName, status, path, 6);
+								reportName.log(LogStatus.FAIL,"Problem in finding sikuli image path");
+							}
+						
+						try 
+							{
+								 Screen sc=new Screen();
+								 Settings.BundlePath=DriverBase.bundlepath;
+								 Pattern pat=new Pattern(imgpath4);
+								 Thread.sleep(250);
+								 sc.rightClick(pat);
+								 reportName.log(LogStatus.PASS,"Performing std rightclink");
+								//System.out.println(wd.getCurrentUrl());
+							} 
+						catch (Exception e)
+							{
+								status = "FAIL " + e.getMessage();
+								String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+								reportName.log(LogStatus.FAIL,status);
+								reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+							}
+						break;
+					case "stdtype":
+									String imgpath3 = null,typeval=null;;
+									long sikuli_rowToRefer3=0;
+									try 
+										{
+											typeval=TestExecutor.value(i, sheetName, path).toLowerCase();
+											sikuli_rowToRefer3 = TestExecutor.counter( i, sheetName, 3, path) - 1;
+											 imgpath3=ExcelUtils.reader(repoSheetname, (int) sikuli_rowToRefer3, 2, repoPath).toString();
+											 log.info("row to refer - "+sikuli_rowToRefer3+"imagpath="+imgpath3);
+										} 
+									catch (Exception e)
+										{
+											status = "FAIL " + e.getMessage();
+											TestExecutor.statusWriter(i, sheetName, status, path, 6);
+											reportName.log(LogStatus.FAIL,"Problem in finding sikuli image path");
+										}
+									
+									try 
+										{
+											 Screen sc=new Screen();
+											 Settings.BundlePath=DriverBase.bundlepath;
+											 Pattern pat=new Pattern(imgpath3);
+											 sc.wait(pat);
+											 Keyboard k=new DesktopKeyboard();
+											 k.type(typeval);
+											 reportName.log(LogStatus.PASS,"Performing Get URL"+wd.getCurrentUrl());
+											//System.out.println(wd.getCurrentUrl());
+										} 
+									catch (Exception e)
+										{
+											status = "FAIL " + e.getMessage();
+											String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+											reportName.log(LogStatus.FAIL,status);
+											reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+										}
+										break;
 					case "checkalllinks":
 									try {
 										String PageTitle=wd.getTitle();
@@ -421,14 +564,14 @@ public class MultiGetelement  {
 													break;
 					case "alert":
 													try {
-														Alert al=wd.switchTo().alert();
-																if (TestExecutor.performType(i, sheetName, path).toLowerCase()=="accept")
+														org.openqa.selenium.Alert al=wd.switchTo().alert();
+																if (TestExecutor.performType(i, sheetName, path).toLowerCase()=="dismiss")
 																	{
-																		al.accept();
+																	al.dismiss();
 																	} 
 																else 
 																	{
-																		al.dismiss();
+																		al.accept();
 																	}
 													} 
 													catch (Exception e) 
