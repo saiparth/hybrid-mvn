@@ -2,6 +2,8 @@ package hybridFramework.webdriver;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
@@ -10,6 +12,7 @@ import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
@@ -97,10 +100,18 @@ public class DriverBase extends TestExecutor {
 														driver = new FirefoxDriver();
 														break;
 										case "chrome":
-														test.log(LogStatus.INFO, "Starting test in Chrome");
 														System.setProperty("webdriver.chrome.driver", "D:\\libs\\chromedriver.exe");
-														driver = new ChromeDriver();
+														ChromeOptions options=new ChromeOptions();
+														options.addArguments("--start-maximized");
+														Map<String, Object> prefs = new HashMap<String, Object>();
+														prefs.put("credentials_enable_service", false);
+														prefs.put("profile.password_manager_enabled", false);
+														options.setExperimentalOption("prefs", prefs);
+														DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+														capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+														driver = new ChromeDriver(capabilities);														test.log(LogStatus.INFO, "Starting test in Chrome");
 														break;
+														
 										case "internet explorer":
 														System.setProperty("webdriver.ie.driver", "D:\\libs\\IEDriverServer.exe");
 														test.log(LogStatus.INFO, "Starting test in IE");
