@@ -6,9 +6,14 @@
       <class name="hybridFramework.webdriver.DriverBase">
         <methods>
           <include name="fileExistChecker"/>
-          <include name="mainRunner"/>
         </methods>
       </class> <!-- hybridFramework.webdriver.DriverBase -->
+      <class name="hybridFramework.webdriver.AppTest">
+        <methods>
+          <include name="setupClass"/>
+          <include name="setupTest"/>
+        </methods>
+      </class> <!-- hybridFramework.webdriver.AppTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

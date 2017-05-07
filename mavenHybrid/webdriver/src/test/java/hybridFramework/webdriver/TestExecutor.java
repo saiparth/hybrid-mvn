@@ -2,20 +2,11 @@ package hybridFramework.webdriver;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import javax.swing.JOptionPane;
-
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -116,78 +107,78 @@ public class TestExecutor extends MultiGetelement {
 			int columnToRefer,
 			ExtentTest reportName)
 			throws Exception 
-{
-//it will provide null pointer exception if input is blank
-PropertyConfigurator.configure(System.getProperty("user.dir")+"/log4j.properties");
-String status = "PASS",input = "";
-String repoSheetname="objectRepository";
-// log.info("Starting action performer");
-statusWriter(i, sheetName, status, path, 6);
-//read ActionType
-
-try {
-input = ExcelUtils.reader(sheetName, i, columnToRefer, path).toString().toLowerCase();
-log.info("input value = "+input);
-} 
-catch (Exception e) 
-{
-log.error("inside action performer,unable to get input");
-}
-
-if (input.contains("executesheet"))
-{
-//System.out.println("execute sheet is called in switch");
-String newsheetname = "";
-long NumOfIterations = 1;
-
-try
-{
-	newsheetname=ExcelUtils.reader(sheetName, i, 5, path).toString();
-	System.out.println(newsheetname);
-} 
-catch (Exception e) 
-{
-	status = "FAIL -" + e.getMessage();
-	statusWriter(i, sheetName, status, path, 6);
-}
-try 
-{
-NumOfIterations = counter(i, sheetName, 3, path);
-	System.out.println("i "+i+""+ newsheetname+"col"+ "iteration"+ NumOfIterations);
-}
-catch (Exception e) 
-{
-	log.info("executeSheetwithinsheet - no count mentioned");
-}
-		status=	sheetExecutor(i,
-								path, 
-								wd, 
-								scPath, 
-								repoPath, 
-								newsheetname, 
-								NumOfIterations,
-								reportName);
-		System.out.println(status+" executesheet");
-
-		if (status=="FAIL") 
-			{
-				statusWriter(i, sheetName, status, path, 7);
-			}								
-}//end of if (input.contains("executesheet"))
-else
-{
-status=webActionPerformer(input, 
-					wd, 
-					i, 
-					sheetName, 
-					path, 
-					reportName, 
-					scPath, 
-					elementLoadTimeLimit, 
-					repoSheetname, 
-					repoPath, log);
-}
-return status;
+				{
+				//it will provide null pointer exception if input is blank
+				PropertyConfigurator.configure(System.getProperty("user.dir")+"/log4j.properties");
+				String status = "PASS",input = "";
+				String repoSheetname="objectRepository";
+				// log.info("Starting action performer");
+				statusWriter(i, sheetName, status, path, 6);
+				//read ActionType
+				
+				try {
+				input = ExcelUtils.reader(sheetName, i, columnToRefer, path).toString().toLowerCase();
+				log.info("input value = "+input);
+				} 
+				catch (Exception e) 
+				{
+				log.error("inside action performer,unable to get input");
+				}
+				
+				if (input.contains("executesheet"))
+				{
+				//System.out.println("execute sheet is called in switch");
+				String newsheetname = "";
+				long NumOfIterations = 1;
+				
+				try
+				{
+					newsheetname=ExcelUtils.reader(sheetName, i, 5, path).toString();
+					System.out.println(newsheetname);
+				} 
+				catch (Exception e) 
+				{
+					status = "FAIL -" + e.getMessage();
+					statusWriter(i, sheetName, status, path, 6);
+				}
+				try 
+				{
+				NumOfIterations = counter(i, sheetName, 3, path);
+					System.out.println("i "+i+""+ newsheetname+"col"+ "iteration"+ NumOfIterations);
+				}
+				catch (Exception e) 
+				{
+					log.info("executeSheetwithinsheet - no count mentioned");
+				}
+						status=	sheetExecutor(i,
+												path, 
+												wd, 
+												scPath, 
+												repoPath, 
+												newsheetname, 
+												NumOfIterations,
+												reportName);
+						System.out.println(status+" executesheet");
+				
+						if (status=="FAIL") 
+							{
+								statusWriter(i, sheetName, status, path, 7);
+							}								
+				}//end of if (input.contains("executesheet"))
+				else
+				{
+				status=webActionPerformer(input, 
+									wd, 
+									i, 
+									sheetName, 
+									path, 
+									reportName, 
+									scPath, 
+									elementLoadTimeLimit, 
+									repoSheetname, 
+									repoPath, log);
+				}
+				return status;
 
 }
 	

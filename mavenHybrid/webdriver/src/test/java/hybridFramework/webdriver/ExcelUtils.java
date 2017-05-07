@@ -2,6 +2,7 @@ package hybridFramework.webdriver;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -37,7 +38,18 @@ public class ExcelUtils {
 		}
 		return lastrownum;
 	}
-
+	public static void propertyWriter( String name,String value) throws IOException {
+		String path=System.getProperty("user.dir")+"/variableStore.properties";
+		File  fil=new File(path);
+		FileInputStream fis=new FileInputStream(fil);
+		Properties pa=new Properties();
+		pa.load(fis);
+		fis.close();
+		pa.setProperty(name,value);
+		FileOutputStream fos=new FileOutputStream(fil);
+		pa.store(fos, "List of records");
+		fos.close();
+	}
 	public static String propertyReader(String path, String input) {
 		String vla = null;
 		FileInputStream fis = null;

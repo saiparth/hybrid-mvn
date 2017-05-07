@@ -5,35 +5,30 @@ package hybridFramework.webdriver;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 import javax.swing.JOptionPane;
-import com.google.common.base.Function;
-import com.mongodb.connection.SslSettings;
-import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.sikuli.api.robot.Keyboard;
 import org.sikuli.api.robot.desktop.DesktopKeyboard;
 import org.sikuli.basics.Settings;
-import org.sikuli.script.FindFailed;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
-import org.apache.log4j.Category;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author partha
@@ -41,38 +36,74 @@ import org.openqa.selenium.support.ui.Wait;
  */
 public class MultiGetelement  {
 	static String parent = null;
-	public static WebElement GetElement( int timelimit, WebDriver wd, String value, String type, long poll) throws InterruptedException {
+	public static WebElement GetElement( int timelimit, 
+										WebDriver wd, 
+										final String value, 
+										final String type, 
+										long poll) throws Exception 
+	{
 		PropertyConfigurator.configure(System.getProperty("user.dir")+"/log4j.properties");
-		List<WebElement> ele = null;
-		boolean status=false;
-		for (int i = 0; i <= timelimit; i++)
-		{
-			try 
-				{
-					  ele = GetElements(wd, value, type);
-				} 
-			catch (Exception e)
+		Wait<WebDriver>wait=new FluentWait<WebDriver>(wd)
+				.withTimeout(timelimit, TimeUnit.SECONDS)
+				.pollingEvery(poll, TimeUnit.MILLISECONDS)
+				.ignoring(NoSuchElementException.class );
+			
+		WebElement element=wait.until(new Function<WebDriver, WebElement>()
 			{
-			}
-			if (ele.size()>0) 
-					{
-						status=true;
-						break;
-					}
-			System.out.println(i);
-			 Thread.sleep(poll);
-		}
-			if (status==true)
+				public WebElement apply(WebDriver wd) 
 				{
-					return ele.get(0);
-				} 
-			else 
-				{
-					return null;
+					System.out.println("polling");
+					return GetElementSwitch(wd, value, type);
 				}
-		
+				
+			});
+			return element;
+				
+			 
 	}
-
+	public static void waitForLoad(WebDriver driver) {
+		 Wait<WebDriver> wait = new WebDriverWait(driver, 30);
+		    wait.until(new Function<WebDriver, Boolean>() {
+		        public Boolean apply(WebDriver driver) {
+		               return (((JavascriptExecutor) driver).executeScript("return document.readyState"))
+		                .equals("complete");
+		        }
+		    });
+	}
+	public static  WebElement GetElementSwitch(WebDriver wd, String value, String type) {
+		WebElement elements = null;
+		switch (type.toLowerCase()) {
+		case "find by id":
+			elements=wd.findElement(By.id(value));
+			break;
+		case "find by classname":
+			elements = wd.findElement(By.className(value));
+			break;
+		case "find by css":
+			elements = wd.findElement(By.cssSelector(value));
+			break;
+		case "find by linktext":
+			elements = wd.findElement(By.linkText(value));
+			break;
+		case "find by name":
+			elements = wd.findElement(By.name(value));
+			break;
+		case "find by partial linktext":
+			elements = wd.findElement(By.partialLinkText(value));
+			break;
+		case "find by xpath":
+			elements = wd.findElement(By.xpath(value));
+			break;
+		case "find by tagname":
+			elements=wd.findElement(By.tagName(value));
+			break;
+		default:
+			System.out.println(
+					"unable to find using given value"+value+"-"+type);
+			break;
+		}
+		return elements;
+	}
 	public static  List<WebElement> GetElements(WebDriver wd, String value, String type) {
 		List<WebElement> elements = null;
 		switch (type.toLowerCase()) {
@@ -136,24 +167,39 @@ public class MultiGetelement  {
 	WebElement ele = null;
 	
 	try {
-		ele = MultiGetelement.GetElement(elementLoadTimeLimit,wd,
-										ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString(),
-										ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString(), 5);
-										log.info("objectrepository row number= "+rowToRefer);
+		String findby=ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString();
+		String findvalue=ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString();
+		String findvalue2=null;
+		//if object value contains @@ then read the next column value and search that value in propertyfile
+		if (findvalue.contains("@@")) {
+			findvalue2=ExcelUtils.reader(repoSheetname, (int) rowToRefer, 3, repoPath).toString();
+			String [] addDynamicId=findvalue.split("@@");
+			String a1=addDynamicId[0];
+			String a2=addDynamicId[1];//variableStore.properties
+			String concatPropertyValue=ExcelUtils.propertyReader(System.getProperty("user.dir")+"/variableStore.properties", findvalue2);
+			findvalue=a1+concatPropertyValue+a2;
+			
+		}
+		System.out.println(findvalue);
+		ele = MultiGetelement.GetElement(elementLoadTimeLimit,wd,findvalue,findby, 250);
+			log.info("objectrepository row number= "+rowToRefer);
 		
-			String	sendkeysvalue=Helpingfunctions.timeForName();
+			String	time=Helpingfunctions.timeForName();
+			String sendkeysvalue=time;
+			String storeval=time;
 					try {
 							sendkeysvalue=TestExecutor.value(i, sheetName, path).toLowerCase();
 						} 
 					catch (Exception e) 
 						{
-							//status = "FAIL " + e.getMessage();	
-							reportName.log(LogStatus.WARNING,status+" sendkeys cell is blank,we sent current time value for this");
+						//if sendkeys value is blank then add time ,this is to avoid writing status to click
+							
 							if (TestExecutor.performType(i, sheetName, path).toLowerCase().contains("sendkeys"))
 							{
+							reportName.log(LogStatus.WARNING,status+" sendkeys cell is blank,we sent current time value for this");
 							TestExecutor.statusWriter(i, sheetName, "WARNING : sendkeys cell is blank,we sent current time value for this", path, 6);
 							}
-						}
+						} 
 									
 			switch (TestExecutor.performType(i, sheetName, path).toLowerCase()) 
 					{
@@ -161,9 +207,23 @@ public class MultiGetelement  {
 						ele.sendKeys(sendkeysvalue);
 						reportName.log(LogStatus.PASS,"Performing Sendkeys action with "+sendkeysvalue);
 						break;
-					case "sendkeysappendname":
-						ele.sendKeys(sendkeysvalue);
-						reportName.log(LogStatus.PASS,"Performing Sendkeys appendname action with "+sendkeysvalue);
+					case "addtextwithtime":
+						ele.sendKeys(sendkeysvalue+"_"+time);
+						reportName.log(LogStatus.PASS,"Performing Sendkeys appendname action with "+sendkeysvalue+"_"+time);
+						break;
+					case "addtextwithtimestore":// j th col
+						try 
+						{
+							 storeval=ExcelUtils.reader(sheetName, i, 9, path).toString();
+						} 
+						catch (Exception e) 
+						{
+							reportName.log(LogStatus.WARNING,status+" store value(column 9) cell is blank,we sent current time value for this");
+							TestExecutor.statusWriter(i, sheetName, "WARNING : store value(column 9) cell is blank,we sent current time value for this", path, 6);
+						}
+						ele.sendKeys(sendkeysvalue+"_"+time);
+						ExcelUtils.propertyWriter(storeval, sendkeysvalue+"_"+time);
+						reportName.log(LogStatus.PASS,"Performing Sendkeys appendname action with "+sendkeysvalue+"_"+time);
 						break;
 					case "click":
 						ele.click();
@@ -201,6 +261,7 @@ public class MultiGetelement  {
 	catch (Exception e) 
 						{
 							status = "FAIL " + e.getMessage();
+							System.out.println(status);
 							TestExecutor.statusWriter(i, sheetName, status, path, 6);
 							String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
 							reportName.log(LogStatus.FAIL,status);
@@ -584,10 +645,10 @@ public class MultiGetelement  {
 													}
 													break;
 					case "asserttitle":
-													Thread.sleep(250);
-													String actual_title=wd.getTitle().toLowerCase();
+													waitForLoad(wd);
+													String actual_title=wd.getTitle();
 													String breaker="0";
-															if (TestExecutor.performType(i, sheetName, path).toLowerCase().contains(actual_title)) 
+															if (TestExecutor.performType(i, sheetName, path).equalsIgnoreCase(actual_title)) 
 																{
 																	TestExecutor.statusWriter(i, sheetName,actual_title , path, 5);
 																}
