@@ -11,6 +11,10 @@ import java.util.function.Function;
 import javax.swing.JOptionPane;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+
+import org.sikuli.api.robot.Env;
+import org.sikuli.api.robot.Key;
+import org.sikuli.api.robot.KeyModifier;
 import org.sikuli.api.robot.Keyboard;
 import org.sikuli.api.robot.desktop.DesktopKeyboard;
 import org.sikuli.basics.Settings;
@@ -203,14 +207,17 @@ public class MultiGetelement  {
 									
 			switch (TestExecutor.performType(i, sheetName, path).toLowerCase()) 
 					{
+			
 					case "sendkeys":
 						ele.sendKeys(sendkeysvalue);
 						reportName.log(LogStatus.PASS,"Performing Sendkeys action with "+sendkeysvalue);
 						break;
+					
 					case "addtextwithtime":
 						ele.sendKeys(sendkeysvalue+"_"+time);
 						reportName.log(LogStatus.PASS,"Performing Sendkeys appendname action with "+sendkeysvalue+"_"+time);
 						break;
+						
 					case "addtextwithtimestore":// j th col
 						try 
 						{
@@ -225,10 +232,12 @@ public class MultiGetelement  {
 						ExcelUtils.propertyWriter(storeval, sendkeysvalue+"_"+time);
 						reportName.log(LogStatus.PASS,"Performing Sendkeys appendname action with "+sendkeysvalue+"_"+time);
 						break;
+						
 					case "click":
 						ele.click();
 						reportName.log(LogStatus.PASS,"Performing Click action");
 						break;
+						
 					case "clear":
 						ele.clear();
 						reportName.log(LogStatus.PASS,"Performing Clear action");
@@ -444,6 +453,75 @@ public class MultiGetelement  {
 											reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
 										}
 										break;
+					case "clickenter":
+						try 
+							{
+								 Keyboard k=new DesktopKeyboard();
+								 k.type(Key.ENTER);
+								 reportName.log(LogStatus.PASS,"Performing Get URL"+wd.getCurrentUrl());
+								//System.out.println(wd.getCurrentUrl());
+							} 
+						catch (Exception e)
+							{
+								status = "FAIL " + e.getMessage();
+								String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+								reportName.log(LogStatus.FAIL,status);
+								reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+							}
+							break;
+							
+					case "selectall":
+						try 
+							{
+								 Keyboard k=new DesktopKeyboard();
+								 k.keyDown(Key.CTRL);
+								 k.type("a");
+								 k.keyUp(Key.CTRL);
+								 reportName.log(LogStatus.PASS,"Performing Get URL"+wd.getCurrentUrl());
+								//System.out.println(wd.getCurrentUrl());
+							} 
+						catch (Exception e)
+							{
+								status = "FAIL " + e.getMessage();
+								String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+								reportName.log(LogStatus.FAIL,status);
+								reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+							}
+							break;
+					case "copy":
+						try 
+							{
+								 Keyboard k=new DesktopKeyboard();
+								 k.copy();
+								 reportName.log(LogStatus.PASS,"Performing Get URL"+wd.getCurrentUrl());
+								//System.out.println(wd.getCurrentUrl());
+							} 
+						catch (Exception e)
+							{
+								status = "FAIL " + e.getMessage();
+								String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+								reportName.log(LogStatus.FAIL,status);
+								reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+							}
+							break;
+					case "paste":
+						try 
+							{
+								 Keyboard k=new DesktopKeyboard();
+								 k.keyDown(Key.CTRL);
+								 k.type("v");
+								 k.keyUp(Key.CTRL);
+								 reportName.log(LogStatus.PASS,"Performing Get URL"+wd.getCurrentUrl());
+								//System.out.println(wd.getCurrentUrl());
+							} 
+						catch (Exception e)
+							{
+								status = "FAIL " + e.getMessage();
+								String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+								reportName.log(LogStatus.FAIL,status);
+								reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+							}
+							break;
 					case "checkalllinks":
 									try {
 										String PageTitle=wd.getTitle();
