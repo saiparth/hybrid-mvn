@@ -38,6 +38,12 @@ public class Helpingfunctions {
 			String date = df.format(cal.getTime());
 			return date;
 		}
+		public static String currentDate(){
+			DateFormat df=new SimpleDateFormat("dd");
+			Calendar cal=Calendar.getInstance();
+			String date=df.format(cal.getTime());
+			return date;
+		}
 		public static String today() 
 		{
 			DateFormat df = new SimpleDateFormat("yyyyMMdd_HH_mm_ss");

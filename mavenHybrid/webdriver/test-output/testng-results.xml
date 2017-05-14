@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="24156" started-at="2017-05-07T06:11:07Z" finished-at="2017-05-07T06:11:31Z">
+  <suite name="Default suite" duration-ms="38174" started-at="2017-05-14T14:30:29Z" finished-at="2017-05-14T14:31:07Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="24156" started-at="2017-05-07T06:11:07Z" finished-at="2017-05-07T06:11:31Z">
+    <test name="Default test" duration-ms="38174" started-at="2017-05-14T14:30:29Z" finished-at="2017-05-14T14:31:07Z">
       <class name="hybridFramework.webdriver.DriverBase">
-        <test-method status="PASS" signature="fileExistChecker()[pri:0, instance:hybridFramework.webdriver.DriverBase@4f063c0a]" name="fileExistChecker" is-config="true" duration-ms="6747" started-at="2017-05-07T11:41:07Z" finished-at="2017-05-07T11:41:14Z">
+        <test-method status="PASS" signature="fileExistChecker()[pri:0, instance:hybridFramework.webdriver.DriverBase@4f063c0a]" name="fileExistChecker" is-config="true" duration-ms="8149" started-at="2017-05-14T20:00:29Z" finished-at="2017-05-14T20:00:37Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- fileExistChecker -->
-        <test-method status="PASS" signature="mainRunner()[pri:0, instance:hybridFramework.webdriver.DriverBase@4f063c0a]" name="mainRunner" duration-ms="17346" started-at="2017-05-07T11:41:14Z" finished-at="2017-05-07T11:41:31Z">
+        <test-method status="PASS" signature="mainRunner()[pri:0, instance:hybridFramework.webdriver.DriverBase@4f063c0a]" name="mainRunner" duration-ms="29978" started-at="2017-05-14T20:00:37Z" finished-at="2017-05-14T20:01:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- mainRunner -->

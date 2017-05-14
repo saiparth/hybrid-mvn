@@ -60,7 +60,8 @@ public class MultiGetelement  {
 					return GetElementSwitch(wd, value, type);
 				}
 				
-			});
+			}
+		);
 			return element;
 				
 			 
@@ -171,17 +172,59 @@ public class MultiGetelement  {
 	WebElement ele = null;
 	
 	try {
-		String findby=ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString();
-		String findvalue=ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString();
+		String findby = null;
+		try
+			{
+				findby = ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString();
+			} 
+		catch (Exception e1) 
+			{
+				e1.printStackTrace();
+				reportName.log(LogStatus.FATAL,"findby value not found");
+			}
+		String findvalue = null;
+		try 
+			{
+				findvalue = ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString();
+			} 
+		catch (Exception e1) 
+			{
+				e1.printStackTrace();
+				reportName.log(LogStatus.FATAL,"element locator value not found");
+			}
 		String findvalue2=null;
-		//if object value contains @@ then read the next column value and search that value in propertyfile
+		//if object value contains @@ then read the next column value and search that value in property file
+		//used split string here ...divide string into 2 arrays
 		if (findvalue.contains("@@")) {
-			findvalue2=ExcelUtils.reader(repoSheetname, (int) rowToRefer, 3, repoPath).toString();
+			try 
+				{
+					findvalue2=ExcelUtils.reader(repoSheetname, (int) rowToRefer, 3, repoPath).toString();
+				} 
+			catch (Exception e1) 
+				{
+					e1.printStackTrace();
+				}
 			String [] addDynamicId=findvalue.split("@@");
 			String a1=addDynamicId[0];
 			String a2=addDynamicId[1];//variableStore.properties
-			String concatPropertyValue=ExcelUtils.propertyReader(System.getProperty("user.dir")+"/variableStore.properties", findvalue2);
+			
+			String concatPropertyValue = "";
+			try 
+				{
+					concatPropertyValue = ExcelUtils.propertyReader(System.getProperty("user.dir")+"/variableStore.properties", findvalue2);
+				} 
+			catch (Exception e) 
+				{
+					status = "FAIL " + e.getMessage();
+					reportName.log(LogStatus.FAIL,"There is no element in property file for mentioned name in excel sheet");
+				}
+			if (ExcelUtils.propertyReader(System.getProperty("user.dir")+
+					"/variableStore.properties", findvalue2).contains("getcurrentdate")) 
+				{
+					concatPropertyValue=Helpingfunctions.currentDate();
+				}
 			findvalue=a1+concatPropertyValue+a2;
+		reportName.log(LogStatus.INFO,"splitting string,a1 value="+a1+" concatProperty Value= "+concatPropertyValue+" a2 value= "+a2);
 			
 		}
 		System.out.println(findvalue);

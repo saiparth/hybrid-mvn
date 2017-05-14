@@ -12,7 +12,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class TestExecutor extends MultiGetelement {
 	static String parent = null;
-	static int elementLoadTimeLimit=60;
+	static int elementLoadTimeLimit=30;
 	static Logger log=Logger.getLogger(TestExecutor.class);
 	
 	public static String actionPerformer(int i,//execute sheet checker
