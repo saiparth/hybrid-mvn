@@ -26,7 +26,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class DriverBase extends TestExecutor {
+public class DriverBaseTest extends TestExecutor {
 	 static String propertiesFilepath= System.getProperty("user.dir")+"/config.properties";
 	File file=new File(propertiesFilepath);
 	
