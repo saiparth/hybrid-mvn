@@ -3,6 +3,8 @@
  */
 package hybridFramework.webdriver;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -485,7 +487,7 @@ public class MultiGetelement  {
 											 sc.wait(pat);
 											 Keyboard k=new DesktopKeyboard();
 											 k.type(typeval);
-											 reportName.log(LogStatus.PASS,"Performing Get URL"+wd.getCurrentUrl());
+											 reportName.log(LogStatus.PASS,"Performing stand alone type action");
 											//System.out.println(wd.getCurrentUrl());
 										} 
 									catch (Exception e)
@@ -499,9 +501,10 @@ public class MultiGetelement  {
 					case "clickenter":
 						try 
 							{
-								 Keyboard k=new DesktopKeyboard();
-								 k.type(Key.ENTER);
-								 reportName.log(LogStatus.PASS,"Performing Get URL"+wd.getCurrentUrl());
+									Robot r=new Robot();
+									r.keyPress(KeyEvent.VK_ENTER);
+									r.keyRelease(KeyEvent.VK_ENTER);
+									reportName.log(LogStatus.PASS,"Performing enter action");
 								//System.out.println(wd.getCurrentUrl());
 							} 
 						catch (Exception e)
@@ -520,7 +523,7 @@ public class MultiGetelement  {
 								 k.keyDown(Key.CTRL);
 								 k.type("a");
 								 k.keyUp(Key.CTRL);
-								 reportName.log(LogStatus.PASS,"Performing Get URL"+wd.getCurrentUrl());
+								 reportName.log(LogStatus.PASS,"Performing select all action");
 								//System.out.println(wd.getCurrentUrl());
 							} 
 						catch (Exception e)
@@ -536,7 +539,7 @@ public class MultiGetelement  {
 							{
 								 Keyboard k=new DesktopKeyboard();
 								 k.copy();
-								 reportName.log(LogStatus.PASS,"Performing Get URL"+wd.getCurrentUrl());
+								 reportName.log(LogStatus.PASS,"Performing TEXT COPY action");
 								//System.out.println(wd.getCurrentUrl());
 							} 
 						catch (Exception e)
@@ -554,7 +557,7 @@ public class MultiGetelement  {
 								 k.keyDown(Key.CTRL);
 								 k.type("v");
 								 k.keyUp(Key.CTRL);
-								 reportName.log(LogStatus.PASS,"Performing Get URL"+wd.getCurrentUrl());
+								 reportName.log(LogStatus.PASS,"Performing PASTE action");
 								//System.out.println(wd.getCurrentUrl());
 							} 
 						catch (Exception e)
@@ -565,17 +568,50 @@ public class MultiGetelement  {
 								reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
 							}
 							break;
+					case "robotupload":// D
+						String filepath = null;
+						long _rowToRefr=0;
+						try 
+							{
+							_rowToRefr = TestExecutor.counter( i, sheetName, 3, path) - 1;
+							filepath=ExcelUtils.reader(repoSheetname, (int) _rowToRefr, 2, repoPath).toString();
+								 log.info("row to refer - "+_rowToRefr+"imagpath="+filepath);
+							} 
+						catch (Exception e) 
+							{
+								status = "FAIL " + e.getMessage();
+								TestExecutor.statusWriter(i, sheetName, status, path, 6);
+								reportName.log(LogStatus.FAIL,"Problem in finding sikuli image path");
+							}
+						
+						try 
+							{
+							Thread.sleep(2000);
+							Robot r=new Robot();
+							r.keyPress(KeyEvent.VK_CONTROL);
+							r.keyPress(KeyEvent.VK_V);
+							r.keyRelease(KeyEvent.VK_V);
+							r.keyRelease(KeyEvent.VK_CONTROL);
+							r.keyPress(KeyEvent.VK_ENTER);
+							r.keyRelease(KeyEvent.VK_ENTER);
+							} 
+						catch (Exception e)
+							{
+								status = "FAIL " + e.getMessage();
+								String sspath=Helpingfunctions.takeScreenShot(wd, scPath);
+								reportName.log(LogStatus.FAIL,status);
+								reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
+							}
+						break;
 					case "checkalllinks":
 									try {
 										String PageTitle=wd.getTitle();
-										reportName.log(LogStatus.INFO, "Checking all links in page - "+PageTitle);
-										List<WebElement> Linkelements=wd.findElements(By.tagName("a"));
-											for (WebElement link : Linkelements) 
-												{
-													String url=link.getAttribute("href");
-													Helpingfunctions.linkValidator(url,reportName);
-												}
-										reportName.log(LogStatus.PASS,"checking all links");
+										reportName.log(LogStatus.INFO, "Details on /webdriver/test-output/linklist.html  Checking all links in page - "+PageTitle);
+										List<WebElement> hostList=wd.findElements(By.tagName("a"));
+										reportName.log(LogStatus.INFO, "Number of links in this page - "+hostList.size());
+										String value="href";
+										threads.test(hostList, value); 
+										 
 										} 
 									catch (Exception e) 
 										{
@@ -589,15 +625,12 @@ public class MultiGetelement  {
 					case "checkallimages":
 									try {
 										String PageTitle=wd.getTitle();
-										reportName.log(LogStatus.INFO, "Checking all images in page - "+PageTitle);
-										List<WebElement> Imgelements=wd.findElements(By.tagName("img"));
-												for (WebElement img : Imgelements) 
-														{
-															String image=img.getAttribute("src");
-															Helpingfunctions.linkValidator(image,reportName);
-														}
-											reportName.log(LogStatus.PASS,"checking all images");
-										} 
+										reportName.log(LogStatus.INFO, "Details on /webdriver/test-output/linklist.html Checking all Images in page - "+PageTitle);
+										List<WebElement> hostList=wd.findElements(By.tagName("img"));
+										reportName.log(LogStatus.INFO, "Number of links in this page - "+hostList.size());
+										String value="src";
+										threads.test(hostList, value); 
+										}
 									catch (Exception e)
 										{
 											status = "FAIL " + e.getMessage();
