@@ -41,26 +41,27 @@ public class DriverBaseTest extends TestExecutor {
 			//Flush old status
 			String path = System.getProperty("user.dir")+"/excelLib.xlsx";
 			String executorSheetName = "suite";
+			System.out.println("Deleting status of previous run on selected sheets");
 			for (int i = 1; i <= ExcelUtils.getRowCount(executorSheetName, path); i++) 
 				
 			{
 				TestExecutor.statusWriter(i, executorSheetName, "",path, 3);
-				System.out.println("flushing");
+				
 				if (TestExecutor.SpecialActionType(i, executorSheetName, path).equalsIgnoreCase("YES")) 
 					{
 					String sheethameToBExecuted = TestExecutor.SpecialFunctions(i, executorSheetName, path);
 					for (int j = 1; j <= ExcelUtils.getRowCount(sheethameToBExecuted, path); j++) 
 								{
 									TestExecutor.statusWriter(i, sheethameToBExecuted, "",path, 6);
-									//System.out.println("flushing");
+									//set cell value = empty
 								}
 					}
 				}
 			}
 		
 	static double iteratorCount = 1;
-	static Logger log=Logger.getLogger(DriverBase.class);
-	 public static String bundlepath=ExcelUtils.propertyReader(DriverBase.propertiesFilepath, "BundlePath");
+	static Logger log=Logger.getLogger(DriverBaseTest.class);
+	 public static String bundlepath=ExcelUtils.propertyReader(DriverBaseTest.propertiesFilepath, "BundlePath");
 	@Test
 	public  static void mainRunner()  
 	{

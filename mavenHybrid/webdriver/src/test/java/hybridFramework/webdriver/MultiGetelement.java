@@ -310,6 +310,9 @@ public class MultiGetelement  {
 										new Actions(wd).doubleClick(ele);
 										reportName.log(LogStatus.PASS,"Performing double click action");
 										break;
+					default:
+										JOptionPane.showMessageDialog( null, "Invalid keyword  defined", null, JOptionPane.ERROR_MESSAGE);
+										break;
 					}
 	} 
 	catch (Exception e) 
@@ -378,7 +381,7 @@ public class MultiGetelement  {
 									try 
 										{
 											 Screen sc=new Screen();
-											 Settings.BundlePath=DriverBase.bundlepath;
+											 Settings.BundlePath=DriverBaseTest.bundlepath;
 											 Pattern pat=new Pattern(imgpath);
 											 sc.wait(pat);
 											 sc.click(pat);
@@ -413,7 +416,7 @@ public class MultiGetelement  {
 								try 
 									{
 										 Screen sc=new Screen();
-										 Settings.BundlePath=DriverBase.bundlepath;
+										 Settings.BundlePath=DriverBaseTest.bundlepath;
 										 Pattern pat=new Pattern(imgpath1);
 										 sc.wait(pat);
 										 sc. doubleClick(pat);
@@ -447,7 +450,7 @@ public class MultiGetelement  {
 						try 
 							{
 								 Screen sc=new Screen();
-								 Settings.BundlePath=DriverBase.bundlepath;
+								 Settings.BundlePath=DriverBaseTest.bundlepath;
 								 Pattern pat=new Pattern(imgpath4);
 								 Thread.sleep(250);
 								 sc.rightClick(pat);
@@ -482,7 +485,7 @@ public class MultiGetelement  {
 									try 
 										{
 											 Screen sc=new Screen();
-											 Settings.BundlePath=DriverBase.bundlepath;
+											 Settings.BundlePath=DriverBaseTest.bundlepath;
 											 Pattern pat=new Pattern(imgpath3);
 											 sc.wait(pat);
 											 Keyboard k=new DesktopKeyboard();
@@ -644,7 +647,7 @@ public class MultiGetelement  {
 									try
 										{
 											String title = wd.getTitle();
-											//System.out.println(title);
+											reportName.log(LogStatus.INFO, "Page title  - "+title);
 											TestExecutor.statusWriter(i, sheetName, title, path, 5);
 										} 
 									catch (Exception e) 
@@ -660,6 +663,7 @@ public class MultiGetelement  {
 										{
 											long windowIndex=TestExecutor.counter(i, sheetName, 3, path);
 											Helpingfunctions.windowSwitcher(wd, windowIndex);
+											reportName.log(LogStatus.INFO, "Switching to windowindex "+windowIndex);
 										} 
 									catch (Exception e) 
 										{
@@ -673,6 +677,7 @@ public class MultiGetelement  {
 									try 
 										{
 											wd.close();
+											reportName.log(LogStatus.INFO,"Closing window" );
 										} 
 									catch (Exception e)
 										{
@@ -687,7 +692,7 @@ public class MultiGetelement  {
 												{
 													Thread.sleep(1000);					
 													parent=wd.getWindowHandle();
-													System.out.println(parent);
+													reportName.log(LogStatus.INFO,"storing current window handle as parent" );
 												} 
 												catch (Exception e) 
 												{
@@ -703,7 +708,7 @@ public class MultiGetelement  {
 												try 
 												{	
 													System.out.println("attempting to switch to parent");
-													System.out.println(parent);
+													reportName.log(LogStatus.INFO,"Switching to parent window" );
 													wd.switchTo().window(parent);
 												} 
 												catch (Exception e) 
@@ -721,6 +726,7 @@ public class MultiGetelement  {
 													try 
 													{	
 														 wd.switchTo().activeElement();
+														 reportName.log(LogStatus.INFO,"switching to active element" );
 													} 
 													catch (Exception e)
 													{
@@ -735,6 +741,7 @@ public class MultiGetelement  {
 													try 
 													{	
 														 wd.switchTo().defaultContent();
+														 reportName.log(LogStatus.INFO,"switch to default content" );
 													} 
 													catch (Exception e) 
 													{
@@ -753,6 +760,7 @@ public class MultiGetelement  {
 															(elementLoadTimeLimit,wd, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString()
 															, ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString(), 5);
 															 wd.switchTo().frame(wwq);
+															 reportName.log(LogStatus.INFO,"switch to frame with row num"+rowToRefer );
 														} 
 													catch (Exception e)
 														{
@@ -802,9 +810,10 @@ public class MultiGetelement  {
 													waitForLoad(wd);
 													String actual_title=wd.getTitle();
 													String breaker="0";
-															if (TestExecutor.performType(i, sheetName, path).equalsIgnoreCase(actual_title)) 
+															if (TestExecutor.locator(i, sheetName, 3, path).equalsIgnoreCase(actual_title)) 
 																{
 																	TestExecutor.statusWriter(i, sheetName,actual_title , path, 5);
+																	reportName.log(LogStatus.INFO,"assert title "+actual_title);
 																}
 															else 
 																{
@@ -834,10 +843,11 @@ public class MultiGetelement  {
 									
 									try 
 												{
+										reportName.log(LogStatus.PASS,"Performing Element Assertion");
 													MultiGetelement.GetElement(elementLoadTimeLimit,wd,
 														ExcelUtils.reader(repoSheetname, (int) rowToRefer, 2, repoPath).toString(),
 														ExcelUtils.reader(repoSheetname, (int) rowToRefer, 1, repoPath).toString(), 5).isDisplayed();
-													reportName.log(LogStatus.PASS,"Performing Element Assertion");
+													
 												} 
 									catch (Exception e) 
 									{
@@ -854,6 +864,7 @@ public class MultiGetelement  {
 													{
 														long SourceRowToRefer = TestExecutor.counter(i, sheetName, 4, path)-1;
 														long dropRowToRefer = TestExecutor.counter(i, sheetName, 5, path)-1;
+														reportName.log(LogStatus.INFO,"Performing drag drop by element "+SourceRowToRefer+" "+dropRowToRefer);
 														WebElement drag = MultiGetelement.GetElement
 																(elementLoadTimeLimit,wd, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 2, repoPath).toString()
 																, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 1, repoPath).toString(), 5);
@@ -879,6 +890,7 @@ public class MultiGetelement  {
 																long SourceRowToRefer = TestExecutor.counter(i, sheetName, 3, path)-1;
 																int xOffset = (int) (TestExecutor.counter(i, sheetName, 4, path));
 																int yOffset = (int)TestExecutor.counter(i, sheetName, 5, path);
+																reportName.log(LogStatus.INFO,"Performing drag drop by coordinates "+SourceRowToRefer+" "+xOffset+" "+yOffset);
 																WebElement drag = MultiGetelement.GetElement
 																		(elementLoadTimeLimit,wd, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 2, repoPath).toString()
 																		, ExcelUtils.reader(repoSheetname, (int) SourceRowToRefer, 1, repoPath).toString(), 5);
@@ -921,7 +933,7 @@ public class MultiGetelement  {
 													try 
 														{
 															Thread.sleep(sleeptime);
-															System.out.println("sleeping for "+sleeptime);
+															reportName.log(LogStatus.INFO,"sleeping for "+sleeptime+"milliseconds");
 														} 
 													catch (InterruptedException e1)
 														{
@@ -930,8 +942,10 @@ public class MultiGetelement  {
 															TestExecutor.statusWriter(i, sheetName, status, path, 6);
 														}
 													break;
-	
-											}
+	default :
+		JOptionPane.showMessageDialog( null, "Invalid keyword  defined", null, JOptionPane.ERROR_MESSAGE);
+		break;									
+	}
 	return status;
 	} 
 }

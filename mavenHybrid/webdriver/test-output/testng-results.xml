@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="31056" started-at="2017-05-27T13:59:35Z" finished-at="2017-05-27T14:00:06Z">
+  <suite name="Default suite" duration-ms="34925" started-at="2017-05-28T13:40:04Z" finished-at="2017-05-28T13:40:39Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="31056" started-at="2017-05-27T13:59:35Z" finished-at="2017-05-27T14:00:06Z">
-      <class name="hybridFramework.webdriver.DriverBase">
-        <test-method status="PASS" signature="fileExistChecker()[pri:0, instance:hybridFramework.webdriver.DriverBase@1c3a4799]" name="fileExistChecker" is-config="true" duration-ms="7119" started-at="2017-05-27T19:29:35Z" finished-at="2017-05-27T19:29:42Z">
+    <test name="Default test" duration-ms="34925" started-at="2017-05-28T13:40:04Z" finished-at="2017-05-28T13:40:39Z">
+      <class name="hybridFramework.webdriver.DriverBaseTest">
+        <test-method status="PASS" signature="fileExistChecker()[pri:0, instance:hybridFramework.webdriver.DriverBaseTest@1c3a4799]" name="fileExistChecker" is-config="true" duration-ms="9922" started-at="2017-05-28T19:10:04Z" finished-at="2017-05-28T19:10:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- fileExistChecker -->
-        <test-method status="PASS" signature="mainRunner()[pri:0, instance:hybridFramework.webdriver.DriverBase@1c3a4799]" name="mainRunner" duration-ms="23870" started-at="2017-05-27T19:29:42Z" finished-at="2017-05-27T19:30:06Z">
+        <test-method status="PASS" signature="mainRunner()[pri:0, instance:hybridFramework.webdriver.DriverBaseTest@1c3a4799]" name="mainRunner" duration-ms="24955" started-at="2017-05-28T19:10:14Z" finished-at="2017-05-28T19:10:39Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- mainRunner -->
-      </class> <!-- hybridFramework.webdriver.DriverBase -->
+      </class> <!-- hybridFramework.webdriver.DriverBaseTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
