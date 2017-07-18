@@ -19,9 +19,9 @@ import org.sikuli.api.robot.Key;
 import org.sikuli.api.robot.KeyModifier;
 import org.sikuli.api.robot.Keyboard;
 import org.sikuli.api.robot.desktop.DesktopKeyboard;
-import org.sikuli.basics.Settings;
+/*import org.sikuli.basics.Settings;
 import org.sikuli.script.Pattern;
-import org.sikuli.script.Screen;
+import org.sikuli.script.Screen;*/
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.poi.EncryptedDocumentException;
@@ -362,7 +362,7 @@ public class MultiGetelement  {
 										reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
 									}
 									break;
-					case "stdclick":
+				/*	case "stdclick":
 									String imgpath = null;
 									long sikuli_rowToRefer=0;
 									try 
@@ -500,7 +500,7 @@ public class MultiGetelement  {
 											reportName.log(LogStatus.FAIL,status);
 											reportName.log(LogStatus.FAIL,reportName.addScreenCapture(sspath));
 										}
-										break;
+										break;*/
 					case "clickenter":
 						try 
 							{

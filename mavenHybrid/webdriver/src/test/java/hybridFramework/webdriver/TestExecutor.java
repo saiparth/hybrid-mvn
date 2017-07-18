@@ -57,6 +57,7 @@ public class TestExecutor extends MultiGetelement {
 							{
 								status = "FAIL -" + e.getMessage();
 								statusWriter(i, sheetName, status, path, 6);
+								reportName.log(LogStatus.FAIL, "Problem with retrieving executesheetName");
 							}
 						try 
 							{

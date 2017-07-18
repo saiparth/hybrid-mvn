@@ -77,24 +77,23 @@ public class threads {
 							code = con.getResponseCode();
 							if (code == 200) 
 										{
-											test.log(LogStatus.PASS, "The passed URL is - "+url+" "+con.getResponseMessage());
+											this.test.log(LogStatus.PASS, "The passed URL is - "+url+" "+con.getResponseMessage());
 										} 
-											if(con.getResponseCode()==HttpURLConnection.HTTP_BAD_REQUEST)
+											
+							else
 											{
-												test.log(LogStatus.FAIL, "The passed URL is - "+url+" "+HttpURLConnection.HTTP_BAD_REQUEST);
-											}
-											if(con.getResponseCode()==HttpURLConnection.HTTP_NOT_FOUND)
-											{
-												test.log(LogStatus.FAIL, "The passed URL is - "+url+" "+HttpURLConnection.HTTP_NOT_FOUND);
+												this.test.log(LogStatus.FAIL, "The passed URL is - "+url+" "+con.getResponseMessage());
 											}
 						} 
 						catch (MalformedURLException e) 
 						{
 							e.printStackTrace();
+							this.test.log(LogStatus.FAIL, "The passed URL is - "+url+" "+e);
 						} 
 						catch (IOException e) 
 						{
 							e.printStackTrace();
+							this.test.log(LogStatus.FAIL, "The passed URL is - "+url+" "+e);
 						}
 			
 			}}}	

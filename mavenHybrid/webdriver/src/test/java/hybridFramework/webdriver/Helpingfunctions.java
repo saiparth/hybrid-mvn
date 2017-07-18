@@ -73,7 +73,7 @@ public class Helpingfunctions {
 				count++;
 			}
 		}
-		public static void linkValidator(String inputUrl,ExtentTest reportName){
+		/*public static void linkValidator(String inputUrl,ExtentTest reportName){
 			try {
 				if (inputUrl.contains("http")) 
 					{
@@ -107,6 +107,6 @@ public class Helpingfunctions {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
+		}*/
 	
 }
